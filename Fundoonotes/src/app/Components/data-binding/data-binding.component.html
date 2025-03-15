@@ -1,0 +1,18 @@
+<h1>Hello data</h1>
+
+<h2 [style.color]="textcolor"> this is {{name}}</h2>
+<img [src]="url">
+<td [attr.colspan]="clspan"></td>
+<button (click)="onButtonClick()">Click me!</button>
+
+<input type="text" [(ngModel)]="twoway">
+<h1>{{twoway}}</h1>
+<h1>{{'hello'.toUpperCase()}}</h1>
+
+<h1>{{username}}</h1>
+<input type="text" (input)="getusername($event)" >
+
+<button (click)="setusername()">set username</button>
+
+<!-- <button (click)="getusernamebyval(username.value)">getusername</button> -->
+
