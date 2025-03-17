@@ -8,31 +8,36 @@
       <!-- Left Section (Text Content) -->
       <div class="left-content">
         <img src="Google-logo.webp" alt="Google Logo" class="google-logo">
-        <h1>Sign in</h1>
+        <h1>Register</h1>
         <p>with your Google Account to continue to Gmail. This account will be available to other Google apps in the browser.
         </p>
       </div>
   
       <!-- Right Section (Login Form) -->
+       <form [formGroup]="RegisterForm" (ngSubmit)="Register()">
       <div class="right-content">
         <div class="login-box">
   
          
           <div class="input-field">
             <label for="name">Name </label>
-            <input type="text" id="name" placeholder="Enter your name">
+            <input type="text" id="name" placeholder="Enter your name" formControlName="name">
           </div>
           <div class="input-field">
             <label for="email">Email </label>
-            <input type="text" id="email" placeholder="Enter your email ">
+            <input type="email" id="email" placeholder="Enter your email" formControlName="email">
           </div>
           <div class="input-field">
-            <label for="email">password</label>
-            <input type="text" id="email" placeholder="Enter password">
+            <label for="password">password</label>
+            <input type="password" id="password" placeholder="Enter password" formControlName="password">
           </div>
+          <!-- <div class="input-field">
+            <label for="city">city</label>
+            <input type="text" id="city" placeholder="Enter your city" formControlName="city">
+          </div> -->
           <div class="input-field">
-            <label for="email">phone</label>
-            <input type="text" id="email" placeholder="Enter your  phone">
+            <label for="phone">phone</label>
+            <input type="text" id="phone" placeholder="Enter your phone" formControlName="phone">
           </div>
   
           <!-- Forgot Email Link -->
@@ -46,10 +51,11 @@
           <!-- Actions Section -->
           <div class="actions">
             
-            <a routerLink="/reg"><button  class="next-btn">Next</button></a>
+            <a type="submit"><button  class="next-btn">Next</button></a>
           </div>
         </div>
       </div>
+    </form>
     </div>
   
     

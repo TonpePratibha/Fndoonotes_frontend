@@ -21,6 +21,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
+import { provideHttpClient } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -31,7 +34,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     DataBindingComponent,
-    MessangerComponent
+    MessangerComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 
     
   ],
-  providers: [],
+  providers: [provideHttpClient() ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

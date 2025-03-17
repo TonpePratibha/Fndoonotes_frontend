@@ -37,6 +37,14 @@ setusername(){
 //   this.username=value;
 // }
 
+count=0
+counter(type:string){
+  type==='add'?this.count++:this.count--
+
+  // this.count++;
+
+}
+
 
 
 }

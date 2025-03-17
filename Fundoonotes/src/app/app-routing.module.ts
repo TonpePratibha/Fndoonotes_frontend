@@ -5,6 +5,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { MessangerComponent } from './Components/messanger/messanger.component';
+import { DataBindingComponent } from './Components/data-binding/data-binding.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'register', component:RegisterComponent},
   {path:'forgot', component:ForgotPasswordComponent},
   {path:'reset', component:ResetPasswordComponent},
-  {path:'msg', component:MessangerComponent}
+  {path:'msg', component:MessangerComponent},
+  {path:'data',component:DataBindingComponent}
 ];
 
 @NgModule({
