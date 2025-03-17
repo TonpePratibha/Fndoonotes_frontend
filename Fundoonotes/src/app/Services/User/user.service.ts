@@ -15,21 +15,15 @@ export class UserService {
   Login(reqData: any) {
     let headers = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json' // ✅ Fixed Typo
+        'Content-Type': 'application/json' 
       })
     };
-    console.log("Sending Login Request: ", reqData); // ✅ Debugging Line
+    console.log("Sending Login Request: ", reqData);
 
     return this.http.PostService('https://localhost:7046/api/users/login', reqData, false, headers);
   }
 
-  
-  // Register(reqData: any) {
-  //   let headers = {
-  //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  //   };
-  //   return this.http.PostService('https://localhost:7046/api/users/register', reqData, false, headers);
-  // }
+ 
 
   Register(reqData: any) {
     let headers = {

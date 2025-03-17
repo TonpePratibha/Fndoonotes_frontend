@@ -7,31 +7,13 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
 
-//   constructor(private httpClient :HttpClient) { }
 
-//   PostService(reqUrl:string,reqData:any,token:boolean=false,httpOptions:any={}){
-//     return this.httpClient.post(reqUrl,reqData,token && httpOptions)
-
-//   }
-
-//   postServiceToken(url:string,reqData:any,token:boolean=true,httpOptions:any={}){
-    
-//     return this.httpClient.post(url,reqData,token && httpOptions)
-// }
-
-// getService(url:string, token:boolean=true , httpOptions:any={}){
-// return this.httpClient.get(url,token && httpOptions)
-// }
-
-// putService(url:string,reqData:any,token:boolean=true, httpOptions:any={}){
-//   return this.httpClient.put(url,reqData,token && httpOptions)
-// }
 
 constructor(private httpClient: HttpClient) {}
 
   PostService(reqUrl: string, reqData: any, token: boolean = false, httpOptions: any = {}) {
-    console.log("POST Request URL:", reqUrl); // ✅ Debugging Line
-    console.log("POST Request Data:", reqData); // ✅ Debugging Line
+    console.log("POST Request URL:", reqUrl); 
+    console.log("POST Request Data:", reqData); 
     return this.httpClient.post(reqUrl, reqData, token ? httpOptions : {});
   }
 

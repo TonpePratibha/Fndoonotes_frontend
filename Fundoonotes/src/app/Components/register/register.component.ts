@@ -21,19 +21,7 @@ RegisterForm!:FormGroup;
    })
  }
 
-//  Register(){
-//   let reqData={
-//     name:this.RegisterForm.value.name,
-//     email:this.RegisterForm.value.email,
-//     password:this.RegisterForm.value.password,
-//     city:this.RegisterForm.value.city,
-//     phone:this.RegisterForm.value.phone,
 
-//   }
-//   this.user.Register(reqData).subscribe((res:any)=>{
-//     console.log(res)
-//   })
-//  }
 
 Register() {
   let reqData = {
