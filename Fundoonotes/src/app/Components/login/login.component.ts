@@ -51,18 +51,18 @@ loginForm!: FormGroup;
         password: this.loginForm.value.password
       };
 
-      console.log("Login Form Data:", reqData); // ✅ Debugging Line
+      console.log("Login Form Data:", reqData); 
 
       this.user.Login(reqData).subscribe(
         (res: any) => {
-          console.log('Login Success:', res); // ✅ Debugging Line
+          console.log('Login Success:', res); 
         },
         (error) => {
-          console.error('Login Error:', error); // ✅ Debugging Line
+          console.error('Login Error:', error); 
         }
       );
     } else {
-      console.log("Form is invalid"); // ✅ Debugging Line
+      console.log("Form is invalid"); 
     }
   }
 

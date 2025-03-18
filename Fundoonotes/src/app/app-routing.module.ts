@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'forgot', component:ForgotPasswordComponent},
-  {path:'reset', component:ResetPasswordComponent},
+  {path:'reset/:token', component:ResetPasswordComponent},
   {path:'msg', component:MessangerComponent},
   {path:'data',component:DataBindingComponent}
 ];

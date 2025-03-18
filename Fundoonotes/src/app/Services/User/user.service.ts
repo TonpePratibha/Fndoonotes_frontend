@@ -34,4 +34,15 @@ export class UserService {
     return this.http.PostService('https://localhost:7046/api/users/register', reqData, false, headers);
   }
   
+Forgot(reqData:any)
+{
+  let headers={
+    headers:new HttpHeaders({
+      'Content-Type': 'application/json' 
+    })
+  }
+  return this.http.postServiceToken('https://localhost:7046/api/users/forgot-password',reqData,true,headers);
+
+
+}
 }
