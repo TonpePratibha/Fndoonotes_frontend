@@ -6,6 +6,10 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { MessangerComponent } from './Components/messanger/messanger.component';
 import { DataBindingComponent } from './Components/data-binding/data-binding.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { NotesComponent } from './Components/notes/notes.component';
+import { ArchiveComponent } from './Components/archive/archive.component';
+import { TrashComponent } from './Components/trash/trash.component';
 
 
 const routes: Routes = [
@@ -14,7 +18,18 @@ const routes: Routes = [
   {path:'forgot', component:ForgotPasswordComponent},
   {path:'reset/:token', component:ResetPasswordComponent},
   {path:'msg', component:MessangerComponent},
-  {path:'data',component:DataBindingComponent}
+  {path:'data',component:DataBindingComponent},
+
+  {path:'dashboard', component:DashboardComponent,
+    children:[
+      {path:'notes',component:NotesComponent},
+      {path:'archive',component:ArchiveComponent},
+      {path:'trash',component:TrashComponent}
+
+    ]
+
+  }
+
 ];
 
 @NgModule({

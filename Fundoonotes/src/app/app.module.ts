@@ -22,6 +22,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatBadgeModule} from '@angular/material/badge';
 import { provideHttpClient } from '@angular/common/http';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { NotesComponent } from './Components/notes/notes.component';
+import { TrashComponent } from './Components/trash/trash.component';
+import { ArchiveComponent } from './Components/archive/archive.component';
 
 
 
@@ -35,6 +40,10 @@ import { provideHttpClient } from '@angular/common/http';
     ResetPasswordComponent,
     DataBindingComponent,
     MessangerComponent,
+    DashboardComponent,
+    NotesComponent,
+    TrashComponent,
+    ArchiveComponent,
     
    
   ],
@@ -51,7 +60,8 @@ import { provideHttpClient } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatToolbarModule
 
     
   ],

@@ -1,0 +1,77 @@
+
+   <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon fontIcon="menu">menu</mat-icon>
+    </button>
+    <img src="keeplogo.png" alt="Google Keep" class="keep-logo">
+    <span class="logo">Google Keep</span>
+    <span class="spacer"></span>
+
+    <!-- <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Search</mat-label>
+      <input matInput>
+      <mat-icon matSuffix fontIcon="search">search</mat-icon>
+    </mat-form-field> -->
+
+
+    <mat-form-field appearance="outline" class="search-bar">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-label>Search</mat-label>
+        <input matInput >
+        
+      </mat-form-field>
+
+    <span class="spacer"></span>
+  
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard/notes" 
+        (click)="selectItem('notes')" 
+        [ngClass]="{'active-item': selectedItem === 'notes'}">
+          <mat-icon fontIcon="lightbulb" class="material-icons-outlined">lightbulb</mat-icon>
+          <span> Notes</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard/archive"
+        (click)="selectItem('archive')" 
+               [ngClass]="{'active-item': selectedItem === 'archive'}"
+        >
+          <mat-icon fontIcon="archive" class="material-icons-outlined">archive</mat-icon>
+          <span> Archive</span>
+        </a>
+        <a mat-list-item routerLink="/dashboard/trash"  (click)="selectItem('trash')" 
+        [ngClass]="{'active-item': selectedItem === 'trash'}">
+          <mat-icon fontIcon="delete" class="material-icons-outlined">delete</mat-icon>
+          <span> Trash</span>
+        </a>
+      </mat-nav-list>
+
+<!-- 
+          <mat-nav-list>
+            <a mat-list-item 
+               (click)="selectItem('notes')" 
+               [ngClass]="{'active-item': selectedItem === 'notes'}"> 
+              Notes 
+            </a>
+            <a mat-list-item 
+               (click)="selectItem('archive')" 
+               [ngClass]="{'active-item': selectedItem === 'archive'}"> 
+              Archive 
+            </a>
+            <a mat-list-item 
+               (click)="selectItem('trash')" 
+               [ngClass]="{'active-item': selectedItem === 'trash'}"> 
+              Trash 
+            </a>
+          </mat-nav-list> -->
+        
+      
+    </mat-sidenav>
+  
+    <mat-sidenav-content class="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
