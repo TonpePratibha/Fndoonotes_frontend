@@ -56,6 +56,7 @@ loginForm!: FormGroup;
       this.user.Login(reqData).subscribe(
         (res: any) => {
           console.log('Login Success:', res); 
+          localStorage.setItem("token",res.token);
         },
         (error) => {
           console.error('Login Error:', error); 

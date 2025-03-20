@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -20,6 +20,9 @@ constructor(private httpClient: HttpClient) {}
   postServiceToken(url: string, reqData: any, token: boolean = true, httpOptions: any = {}) {
     return this.httpClient.post(url, reqData, token ? httpOptions : {});
   }
+
+  
+  
 
   getService(url: string, token: boolean = true, httpOptions: any = {}) {
     return this.httpClient.get(url, token ? httpOptions : {});
