@@ -27,6 +27,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { NotesComponent } from './Components/notes/notes.component';
 import { TrashComponent } from './Components/trash/trash.component';
 import { ArchiveComponent } from './Components/archive/archive.component';
+import { GetallnotesComponent } from './Components/getallnotes/getallnotes.component';
+import { DisplaynotesComponent } from './Components/displaynotes/displaynotes.component';
 
 
 
@@ -44,6 +46,8 @@ import { ArchiveComponent } from './Components/archive/archive.component';
     NotesComponent,
     TrashComponent,
     ArchiveComponent,
+    GetallnotesComponent,
+    DisplaynotesComponent,
     
    
   ],
@@ -61,7 +65,8 @@ import { ArchiveComponent } from './Components/archive/archive.component';
     MatIconModule,
     MatListModule,
     MatBadgeModule,
-    MatToolbarModule
+    MatToolbarModule,
+    // AppModule
 
     
   ],

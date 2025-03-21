@@ -1,0 +1,18 @@
+
+
+<div class="notes-grid"  *ngFor="let note of notesList">
+    <mat-card class="note-card"  [style.background]="note.color">
+      <mat-card-title class="note-title">
+        {{ note.title }}
+      </mat-card-title>
+      
+      <mat-card-content class="note-content">
+        {{ note.description }}
+      </mat-card-content>
+  
+      <div class="note-footer">
+        
+      </div>
+    </mat-card>
+  </div>
+  

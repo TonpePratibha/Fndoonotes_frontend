@@ -1,57 +1,71 @@
-<!-- 
 
-
-  <div class="note-container">
+<div class="note-container">
+  <form [formGroup]="NotesForm" (ngSubmit)="onSubmit()">
     <div class="note" (click)="expandNote()" [class.expanded]="isExpanded">
-      <input
-        type="text"
-        class="note-title"
-        placeholder="Title"
-        [(ngModel)]="note.title"
-        *ngIf="isExpanded"
-      />
-      <textarea
-        class="note-description"
-        placeholder="Take a note..."
-        [(ngModel)]="note.description"
-        rows="1"
-        (input)="autoResize($event)"
-      ></textarea>
+
+      <!-- Title Input (Using ng-template) -->
+      <ng-template #titleTemplate>
+        <input type="text" class="note-title" placeholder="Title" formControlName="title" />
+      </ng-template>
+
+      <!-- Rendering Title First If Expanded -->
+      <ng-container *ngIf="isExpanded">
+        <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+      </ng-container>
+
+      <!-- Note Description (Always Visible) -->
+      <textarea class="note-description" placeholder="Take a note..." formControlName="description" 
+                rows="1" (input)="autoResize($event)">
+      </textarea>
+
+      <!-- Submit Button (Using ng-template) -->
+      <ng-template #buttonTemplate>
+        <button type="submit">Add</button>
+      </ng-template>
+
+      <!-- Rendering Button If Expanded -->
+      <ng-container *ngIf="isExpanded">
+        <ng-container *ngTemplateOutlet="buttonTemplate"></ng-container>
+      </ng-container>
+
     </div>
-  </div>
-   -->
+  </form>
+</div>
 
 
-   <!-- <div class="note-container">
-    <div class="note" (click)="expandNote()" [class.expanded]="isExpanded">
-      <input
-        type="text"
-        class="note-title"
-        placeholder="Title"
-        [(ngModel)]="note.title"
-        *ngIf="isExpanded"
-      />
-      <textarea
-        class="note-description"
-        placeholder="Take a note..."
-        [(ngModel)]="note.description"
-        rows="1"
-        (input)="autoResize($event)"
-      ></textarea>
-      <button *ngIf="isExpanded" (click)="addNote()">Add</button>
-    </div>
-  </div> -->
-  
-
-  <div class="note-container">
+  <!-- <div class="note-container">
     <form [formGroup]="NotesForm" (ngSubmit)="onSubmit()">
       <div class="note" (click)="expandNote()" [class.expanded]="isExpanded">
         <input type="text" class="note-title" placeholder="Title" formControlName="title" *ngIf="isExpanded" />
         <textarea class="note-description" placeholder="Take a note..." formControlName="description" rows="1" (input)="autoResize($event)"></textarea>
         <button *ngIf="isExpanded" type="submit">Add</button>
+        
       </div>
     </form>
-  </div> 
-  <!-- <button (ngSubmit)="onSubmit()">disply notes</button> -->
+  </div>  -->
+ 
 
-  
+<!--   
+  <div *ngIf="!isExpanded; then notesList else noteForm"></div>  -->
+
+<!-- Form for Creating a Note -->
+ <!-- <ng-template #noteForm>
+  <form [formGroup]="NotesForm" (ngSubmit)="onSubmit()">
+    <div class="note expanded">
+      <input type="text" class="note-title" placeholder="Title" formControlName="title" />
+      <textarea class="note-description" placeholder="Take a note..." formControlName="description" rows="2"></textarea>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</ng-template> -->
+
+<!-- Notes List -->
+ <!-- <ng-template #notesList>
+  <div class="notes-list">
+    <div *ngFor="let note of notes" class="note-card">
+      <h3>{{ note.title }}</h3>
+      <p>{{ note.description }}</p>
+    </div>
+  </div>
+</ng-template> -->
+

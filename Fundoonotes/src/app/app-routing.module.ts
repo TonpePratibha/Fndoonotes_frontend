@@ -10,6 +10,7 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { NotesComponent } from './Components/notes/notes.component';
 import { ArchiveComponent } from './Components/archive/archive.component';
 import { TrashComponent } from './Components/trash/trash.component';
+import { GetallnotesComponent } from './Components/getallnotes/getallnotes.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
 
   {path:'dashboard', component:DashboardComponent,
     children:[
-      {path:'notes',component:NotesComponent},
+      {path:'notes',component:GetallnotesComponent},
       {path:'archive',component:ArchiveComponent},
       {path:'trash',component:TrashComponent}
 
