@@ -12,10 +12,6 @@ this.token=localStorage.getItem('token')
 
    }
 
-
-
-   
-
 addNotes(reqData: any) {
   let headers = {
     headers: new HttpHeaders({
@@ -38,6 +34,47 @@ getNotes(){
 
   };
   return this.httpService.getService("https://localhost:7046/api/notes",true,headers);
+}
+
+updateNotes(reqData:any,notesId:any){
+  let header={
+    headers:new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}` 
+
+    })
+  }
+  return this.httpService.putService(`https://localhost:7046/api/notes?noteId`+notesId,reqData,true,header)
+
+}
+
+
+trashNotes(reqData:any){
+  console.log(reqData)
+  let header={
+    headers:new HttpHeaders({
+        'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+  }
+  console.log('Request ID:', reqData.id);
+ return this.httpService.putService(`https://localhost:7046/api/notes/trash/${reqData.id}`,{},true,header)
+ 
+
+}
+
+
+
+archievNotes(reqData:any){
+  console.log(reqData)
+  let header={
+    headers:new HttpHeaders({
+       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+  }
+   return this.httpService.putService(`/api/notes/archive/${reqData.id}`,{},true,header);
+  
 }
 
 

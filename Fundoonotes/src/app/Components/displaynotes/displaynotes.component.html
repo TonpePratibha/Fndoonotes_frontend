@@ -2,17 +2,18 @@
 
 <div class="notes-grid"  *ngFor="let note of notesList">
     <mat-card class="note-card"  [style.background]="note.color">
-      <mat-card-title class="note-title">
-        {{ note.title }}
+      <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
+        {{ note.title }} 
       </mat-card-title>
       
-      <mat-card-content class="note-content">
+      <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
         {{ note.description }}
       </mat-card-content>
   
       <div class="note-footer">
-        
+        <app-icons [notesObject]="note"  ></app-icons> 
       </div>
     </mat-card>
   </div>
   
+  <!-- (refreshEvent)="receivedRefreshEvent($event)" -->

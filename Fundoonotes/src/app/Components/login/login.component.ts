@@ -9,28 +9,7 @@ import { FormBuilder, FormGroup ,Validators} from '@angular/forms';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-// loginForm!:FormGroup;
-// constructor(private user:UserService,private formbuilder:FormBuilder){}
-//   ngOnInit(): void {
-//     this.loginForm=this.formbuilder.group({
-// email:[''],
-// password:['']
 
-//     })
-//   }
-
-//   Login(){
-//   let reqData={
-// email:this.loginForm.value.email,
-// password:this.loginForm.value.password
-
-//   }
-//   this.user.Login(reqData).subscribe((res:any)=>{
-// console.log(res);
-
-//   })
-
-//   }
 
 
 loginForm!: FormGroup;

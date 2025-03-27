@@ -1,0 +1,19 @@
+<div [style.background]="data.color">
+    <div class="text-Title">
+        <mat-card-title>
+            <input matInput [(ngModel)]="title" [style.background]="data.color" class="input">
+        </mat-card-title>
+
+    </div>
+    <div class="text-body">
+        <input matInput [style.background]="data.color" [(ngModel)]="description" class="inputdesc">
+    </div>
+<div fxLayout="row" fxLayoutAlign="space-between end">
+    <div class="icons">
+ <app-icons></app-icons>
+    </div>
+<div>
+    <button mat-icon-button (click)="closeDialog()">close</button>
+</div>
+</div>
+</div>

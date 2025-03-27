@@ -1,0 +1,55 @@
+.notesbutton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .moreicons {
+    width: 24px;
+    height: 24px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, opacity 0.2s;
+  
+    &:hover {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+  
+  mat-menu {
+    background: white;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 5px 0;
+  }
+  
+  mat-menu-item {
+    font-size: 14px;
+    padding: 8px 16px;
+    transition: background 0.2s;
+  
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .coloricon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    margin: 3px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+  

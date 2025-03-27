@@ -29,7 +29,9 @@ import { TrashComponent } from './Components/trash/trash.component';
 import { ArchiveComponent } from './Components/archive/archive.component';
 import { GetallnotesComponent } from './Components/getallnotes/getallnotes.component';
 import { DisplaynotesComponent } from './Components/displaynotes/displaynotes.component';
-
+import { IconsComponent } from './Components/icons/icons.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { UpdatenoteComponent } from './Components/updatenote/updatenote.component';
 
 
 
@@ -48,6 +50,8 @@ import { DisplaynotesComponent } from './Components/displaynotes/displaynotes.co
     ArchiveComponent,
     GetallnotesComponent,
     DisplaynotesComponent,
+    IconsComponent,
+    UpdatenoteComponent,
     
    
   ],
@@ -66,6 +70,7 @@ import { DisplaynotesComponent } from './Components/displaynotes/displaynotes.co
     MatListModule,
     MatBadgeModule,
     MatToolbarModule,
+    MatMenuModule
     // AppModule
 
     
