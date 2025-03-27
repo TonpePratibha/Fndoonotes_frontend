@@ -12,7 +12,7 @@ export class UpdatenoteComponent implements OnInit {
   title:any;
   description:any;
   id:any;
-  color:any
+
  constructor(
   @Inject(MAT_DIALOG_DATA) public data:any,
   public dialogbox:MatDialogRef<UpdatenoteComponent>,
@@ -21,7 +21,8 @@ export class UpdatenoteComponent implements OnInit {
   this.title=data.title,
   this.description=data.description,
   this.id=data.id
-  this.color=data.coclor
+  
+ 
  }
   ngOnInit(): void {
    
@@ -31,11 +32,14 @@ export class UpdatenoteComponent implements OnInit {
   let reqData={
     title:this.title,
   description: this.description,
-  color:this.color
+  
   }
   this.notes.updateNotes(reqData,this.id).subscribe((response:any)=>{
   console.log(response);
   this.dialogbox.close()
   });
  }
+
+
+
 }

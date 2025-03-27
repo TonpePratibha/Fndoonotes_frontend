@@ -44,9 +44,13 @@ updateNotes(reqData:any,notesId:any){
 
     })
   }
-  return this.httpService.putService(`https://localhost:7046/api/notes?noteId`+notesId,reqData,true,header)
+  return this.httpService.putService(`https://localhost:7046/api/notes/update/${notesId}`,reqData,true,header)
 
 }
+
+
+
+
 
 
 trashNotes(reqData:any){
@@ -73,9 +77,40 @@ archievNotes(reqData:any){
       'Authorization': `Bearer ${this.token}`
     })
   }
-   return this.httpService.putService(`/api/notes/archive/${reqData.id}`,{},true,header);
+   return this.httpService.putService(`https://localhost:7046/api/notes/archive/${reqData.id}`,{},true,header);
   
 }
+
+// notesColor(reqData:any){
+// console.log(reqData)
+// let header={
+//   headers:new HttpHeaders({
+//     'Content-Type': 'application/json',
+//    'Authorization': `Bearer ${this.token}`
+//  })
+// }
+// return this.httpService.putService(`https://localhost:7046/api/notes/${reqData.id}`,{color: reqData.color},true,header)
+// }
+
+notesColor(reqData: any) {
+  console.log("API Request Data:", reqData);
+
+  let header = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+  };
+
+  return this.httpService.patchService(
+    `https://localhost:7046/api/notes/${reqData.id}/color`,  
+    { color: reqData.color },  // ✅ Send only color
+    true,
+    header
+  );
+}
+
+
 
 
 }

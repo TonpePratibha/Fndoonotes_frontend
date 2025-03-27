@@ -1,7 +1,7 @@
 <button class="notesbutton">
     
     <img class="moreicons" src="group_icon.svg" />
-    <img class="moreicons" src="palette_icon.png" />
+    <img class="moreicons" [matMenuTriggerFor]="paletteMenu"  src="palette_icon.png" />
     <img class="moreicons" (click)="onArchive()" src="archive_icon.png" />
     <img class="moreicons" (click)="onDelete()" src="delete_icon.png"  />
     <img class="moreicons" src="more.svg" />
@@ -14,12 +14,9 @@
       <button mat-menu-item>Show checkboxes</button>
     </mat-menu>
   </button>
-    <!-- <mat-menu class="test2">
-      <div>
-        <button class="coloricon" ></button>
+    <mat-menu #paletteMenu="matMenu" xPosition="before" id="colorpalette" class="test2">
+      <div *ngFor='let colors of colorArray'>
+        <button class="colorIcon" [style.background]="colors.code" (click)="selectColor(colors)"></button>
       </div>
-    </mat-menu> -->
-  <!-- </button> -->
-  <!-- #paletteMenu="matMenu" xPosition="before" id="colorpalette"  -->
-  <!-- <div *ngFor="let colors of colorArray"> -->
-  <!-- [style.background]="colors.code" (click)="selectColor(colors)" -->
+    </mat-menu>
+ 

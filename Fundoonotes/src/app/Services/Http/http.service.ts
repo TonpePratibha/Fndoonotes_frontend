@@ -32,6 +32,9 @@ constructor(private httpClient: HttpClient) {}
     return this.httpClient.put(url, reqData, token ? httpOptions : {});
   }
 
+  patchService(url: string, reqData: any, token: boolean = true, httpOptions: any = {}) {
+    return this.httpClient.patch(url, reqData, token ? httpOptions : {});
+}
 
 
 }
