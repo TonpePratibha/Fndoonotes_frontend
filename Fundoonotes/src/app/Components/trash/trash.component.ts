@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NotesService } from '../../Services/Notes/notes.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-trash',
@@ -6,6 +8,35 @@ import { Component } from '@angular/core';
   templateUrl: './trash.component.html',
   styleUrl: './trash.component.scss'
 })
-export class TrashComponent {
+export class TrashComponent implements OnInit{
+trashList:any[]=[];
+
+@Output() noteRestored = new EventEmitter<void>(); 
+constructor(private notes:NotesService){}
+
+ngOnInit(): void {
+  this.onSubmit()
+}
+onSubmit(){
+  this.notes.getNotes().subscribe((response:any)=>{
+    console.log(response)
+    this.trashList=response
+    this.trashList=this.trashList.filter((object:any)=>{
+      return object.trash==true;
+    })
+  })
+}
+restore(notes:any){
+let reqData={
+  id:notes.id
+}
+console.log(reqData)
+this.notes.trashNotes(reqData).subscribe((response:any)=>{
+  console.log(response)
+  this.trashList = this.trashList.filter((obj: any) => obj.id !== notes.id);
+  this.noteRestored.emit(); 
+})
+
+}
 
 }

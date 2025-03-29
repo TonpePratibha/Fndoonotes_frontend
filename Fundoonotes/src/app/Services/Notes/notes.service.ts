@@ -104,7 +104,7 @@ notesColor(reqData: any) {
 
   return this.httpService.patchService(
     `https://localhost:7046/api/notes/${reqData.id}/color`,  
-    { color: reqData.color },  // ✅ Send only color
+    { color: reqData.color },  
     true,
     header
   );

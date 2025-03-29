@@ -22,7 +22,14 @@ onSubmit()
     console.log("stored to array variable")
     console.log(this.notesArray);
  
+    this.notesArray=this.notesArray.filter((object:any)=>{
+      return object.trash==false;
 
+    })
+    this.notesArray=this.notesArray.filter((object:any)=>{
+      return object.archive==false;
+    })
+    this.notesArray.reverse()
   })
 }
 
