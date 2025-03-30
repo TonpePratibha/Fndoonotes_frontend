@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { UpdatenoteComponent } from '../updatenote/updatenote.component';
 import { NotesService } from '../../Services/Notes/notes.service';
+import { DataserviceService } from '../../Services/DataService/dataservice.service';
+
 @Component({
   selector: 'app-displaynotes',
   standalone: false,
@@ -10,10 +12,16 @@ import { NotesService } from '../../Services/Notes/notes.service';
 })
 export class DisplaynotesComponent  {
 @Input() notesList:any[]=[];
+filterNote:any;
 
-constructor(public dialog:MatDialog,public notes:NotesService){}
+constructor(public dialog:MatDialog,public notes:NotesService,public data:DataserviceService){}
 ngOnInit() {
   console.log('Notes List:', this.notesList);
+  this.data.incomingData.subscribe((response)=>{
+    console.log("search in process",response)
+    this.filterNote=response;
+  })
+
 }
 
 editnoteDialogbox(notes:any){
@@ -27,6 +35,8 @@ editnoteDialogbox(notes:any){
     
   })
 }
+
+
 
 // refreshNotes() {
 //   // Call your API again to fetch updated notes

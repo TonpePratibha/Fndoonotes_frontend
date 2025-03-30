@@ -73,12 +73,20 @@
           <div class="input-field">
             <label for="email">Email or phone</label>
             <input type="text" id="email" placeholder="Enter your email or phone" formControlName="email">
+            <div class="error" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <span *ngIf="email?.errors?.['required']">Email is required.</span>
+              <span *ngIf="email?.errors?.['email']">Enter a valid email.</span>
+            </div>
           </div>
 
           <!-- Password Field -->
           <div class="input-field">
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Enter your Password" formControlName="password">
+            <div class="error" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+              <span *ngIf="password?.errors?.['required']">Password is required.</span>
+              <span *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</span>
+            </div>
           </div>
 
           <!-- Forgot Password Link -->

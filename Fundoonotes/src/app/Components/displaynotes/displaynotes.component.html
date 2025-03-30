@@ -1,6 +1,6 @@
 
 
-<div class="notes-grid"  *ngFor="let note of notesList">
+<div class="notes-grid"  *ngFor="let note of notesList |filter:filterNote">
     <mat-card class="note-card"  [style.background]="note.color">
       <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
         {{ note.title }} 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataserviceService } from '../../Services/DataService/dataservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +10,14 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   selectedItem: string = 'notes';  // Default selection
 
+constructor(private data:DataserviceService){}
+
   selectItem(item: string) {
     this.selectedItem = item;
   }
 
-  
+  search(event:any)
+  {console.log(event.target.value)
+    this.data.outgoingData(event.target.value);
+  }
 }

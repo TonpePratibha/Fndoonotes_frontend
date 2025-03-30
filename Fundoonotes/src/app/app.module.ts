@@ -32,6 +32,9 @@ import { DisplaynotesComponent } from './Components/displaynotes/displaynotes.co
 import { IconsComponent } from './Components/icons/icons.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { UpdatenoteComponent } from './Components/updatenote/updatenote.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+import { FilterPipe } from './Pipes/filter.pipe';
 
 
 
@@ -52,6 +55,8 @@ import { UpdatenoteComponent } from './Components/updatenote/updatenote.componen
     DisplaynotesComponent,
     IconsComponent,
     UpdatenoteComponent,
+  
+    FilterPipe,
     
    
   ],
@@ -71,7 +76,7 @@ import { UpdatenoteComponent } from './Components/updatenote/updatenote.componen
     MatBadgeModule,
     MatToolbarModule,
     MatMenuModule,
-    
+    MatSnackBarModule
     // AppModule
 
     
