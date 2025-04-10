@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../Services/User/user.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { UserService } from '../../Services/User/user.service';
 })
 export class RegisterComponent implements OnInit{
 RegisterForm!:FormGroup;
- constructor(private user:UserService,private formbuilder:FormBuilder){}
+ constructor(private user:UserService,private formbuilder:FormBuilder,private router:Router,private snackbar:MatSnackBar){}
  ngOnInit(): void {
    this.RegisterForm=this.formbuilder.group({
     name:[''],
@@ -35,11 +37,16 @@ Register() {
   this.user.Register(reqData).subscribe({
     next: (res) => {
       console.log("Registration Successful:", res);
-      alert("User Registered Successfully!");
+      this.router.navigate(['/login']);
+      this.snackbar.open('User Registered Successfully!', 'Close', {
+        duration: 1000,
+        panelClass: ['success-snackbar']
+      });
+
     },
     error: (err) => {
       console.error(" Registration Failed:", err);
-      alert("Error in Registration: " + err.message);
+      
     }
   });
 }

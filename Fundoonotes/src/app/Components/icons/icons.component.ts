@@ -14,6 +14,12 @@ export class IconsComponent implements OnInit{
 @Input() notesObject:any
 @Output()refreshEvent=new EventEmitter<string>();
 
+
+
+@Input() isCreateMode: boolean = false;
+
+@Output() colorSelected = new EventEmitter<string>(); // NEW: to notify NotesComponent
+
 constructor(private notes:NotesService){}
 
 ngOnInit(): void {
@@ -61,40 +67,51 @@ colorArray: Array<any> = [
   { code: '#D3D3D3', name: 'grey' },
 ];
 
-// selectColor(colors:any){
-//   let reqData={
-//     color:colors.name,
-//    id:this.notesObject.id
-//   }
-//   this.notes.notesColor(reqData).subscribe((response:any)=>{
-//     console.log(response)
-//    // this.refreshEvent.emit(response);
-   
-//   });
-  
 
-// }
 selectColor(color: any) {
-  let reqData = {
-    color: color.code, 
-    id: this.notesObject.id  // Ensure ID is correct
-  };
+  if (this.isCreateMode) {
+    // In create mode, just emit selected color back to NotesComponent
+    this.colorSelected.emit(color.code);
+  } else {
+    // In update mode, call the API
+    let reqData = {
+      color: color.code,
+      id: this.notesObject.id
+    };
 
-  this.notes.notesColor(reqData).subscribe(
-    (response: any) => {
-      console.log("Color updated successfully", response);
-      
-      // ✅ Update the UI immediately
-      this.notesObject.color = color.code;
-      
-      // ✅ Notify parent to refresh the note list
-      this.refreshEvent.emit();
-    },
-    (error) => {
-      console.error("Error updating color", error);
-    }
-  );
+    this.notes.notesColor(reqData).subscribe(
+      (response: any) => {
+        console.log("Color updated successfully", response);
+        this.notesObject.color = color.code;
+        this.refreshEvent.emit();
+      },
+      (error) => {
+        console.error("Error updating color", error);
+      }
+    );
+  }
 }
+// selectColor(color: any) {
+//   let reqData = {
+//     color: color.code, 
+//     id: this.notesObject.id  
+//   };
+
+//   this.notes.notesColor(reqData).subscribe(
+//     (response: any) => {
+//       console.log("Color updated successfully", response);
+      
+      
+//       this.notesObject.color = color.code;
+      
+     
+//       this.refreshEvent.emit();
+//     },
+//     (error) => {
+//       console.error("Error updating color", error);
+//     }
+//   );
+// }
 
 
 

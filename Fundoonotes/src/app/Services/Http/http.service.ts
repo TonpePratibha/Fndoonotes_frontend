@@ -35,6 +35,9 @@ constructor(private httpClient: HttpClient) {}
   patchService(url: string, reqData: any, token: boolean = true, httpOptions: any = {}) {
     return this.httpClient.patch(url, reqData, token ? httpOptions : {});
 }
+deleteService(url: string, token: boolean = true, httpOptions: any = {}) {
+  return this.httpClient.delete(url, token ? httpOptions : {});
+}
 
 
 }

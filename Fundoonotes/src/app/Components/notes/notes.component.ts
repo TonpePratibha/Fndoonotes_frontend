@@ -19,7 +19,8 @@ export class NotesComponent implements OnInit{
   ngOnInit(): void {
     this.NotesForm = this.formbuilder.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      color:['']
     });
   }
 
@@ -32,6 +33,12 @@ export class NotesComponent implements OnInit{
     event.target.style.height = event.target.scrollHeight + 'px';
   }
 
+
+  onColorSelected(color: string) {
+    this.NotesForm.patchValue({ color }); // Update the form's color field
+    console.log("Color selected in create:", color);
+  }
+  
   onSubmit() {
     if (this.NotesForm.invalid) {
       return;
@@ -39,7 +46,8 @@ export class NotesComponent implements OnInit{
 
     let reqData = {
       title: this.NotesForm.value.title,
-      description: this.NotesForm.value.description
+      description: this.NotesForm.value.description,
+      color: this.NotesForm.value.color || '#ffffff' 
     };
 
     console.log(reqData);
@@ -56,23 +64,9 @@ export class NotesComponent implements OnInit{
     this.display = true;
   }
 
-  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 
 }
+

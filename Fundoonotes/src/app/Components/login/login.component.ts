@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../Services/User/user.service';
 import { FormBuilder, FormGroup ,Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
 loginForm!: FormGroup;
 
-  constructor(private user: UserService, private formbuilder: FormBuilder,private snackbar:MatSnackBar) {}
+  constructor(private user: UserService, private formbuilder: FormBuilder,private snackbar:MatSnackBar,private router:Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
@@ -37,7 +38,13 @@ loginForm!: FormGroup;
         (res: any) => {
           console.log('Login Success:', res); 
           localStorage.setItem("token",res.token);
-          this.snackbar.open("login successful");
+          this.router.navigate(['/dashboard']);
+          
+          this.snackbar.open('login Successfull!', 'Close', {
+            duration: 1000,
+            panelClass: ['success-snackbar']
+          });
+
         },
         (error) => {
           console.error('Login Error:', error); 

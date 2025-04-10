@@ -39,4 +39,18 @@ this.notes.trashNotes(reqData).subscribe((response:any)=>{
 
 }
 
+deleteNote(note: any) {
+  let reqData = { id: note.id };
+  console.log('Deleting:', reqData);
+  this.notes.deleteNote(reqData).subscribe({
+    next: (response: any) => {
+      console.log('Deleted:', response);
+      this.trashList = this.trashList.filter((obj: any) => obj.id !== note.id);
+    },
+    error: (err: any) => {
+      console.error('Delete failed:', err);
+    }
+  });
+}
+
 }

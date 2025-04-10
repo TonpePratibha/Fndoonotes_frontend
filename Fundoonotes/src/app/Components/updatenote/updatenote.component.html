@@ -10,7 +10,8 @@
     </div>
 <div fxLayout="row" fxLayoutAlign="space-between end">
     <div class="icons">
- <app-icons></app-icons>
+        <app-icons [notesObject]="data" (colorSelected)="onColorSelected($event)"></app-icons>
+
     </div>
 <div>
     <button mat-icon-button (click)="closeDialog()">close</button>

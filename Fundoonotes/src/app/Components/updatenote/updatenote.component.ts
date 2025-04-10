@@ -12,6 +12,7 @@ export class UpdatenoteComponent implements OnInit {
   title:any;
   description:any;
   id:any;
+  color:any;
 
  constructor(
   @Inject(MAT_DIALOG_DATA) public data:any,
@@ -20,18 +21,22 @@ export class UpdatenoteComponent implements OnInit {
  ){
   this.title=data.title,
   this.description=data.description,
-  this.id=data.id
+  this.id=data.id,
+  this.color=data.color
   
  
  }
   ngOnInit(): void {
    
  }
-
+ onColorSelected(selectedColor: string) {
+  this.color = selectedColor;
+}
  closeDialog(){
   let reqData={
     title:this.title,
   description: this.description,
+  color: this.color,
   
   }
   this.notes.updateNotes(reqData,this.id).subscribe((response:any)=>{

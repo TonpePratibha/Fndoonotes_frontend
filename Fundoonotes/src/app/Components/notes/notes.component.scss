@@ -26,6 +26,7 @@
     border: none;
     outline: none;
     padding: 5px;
+    background-color: transparent; 
   }
   
   .note-description {
@@ -36,6 +37,26 @@
     resize: none;
     padding: 5px;
     overflow: hidden;
+    background-color: transparent; 
   }
   
+  .note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  
+  .close-text {
+    cursor: pointer;
+    color: black;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .close-text:hover {
+    background-color: #e0e0e0;
+  }
   

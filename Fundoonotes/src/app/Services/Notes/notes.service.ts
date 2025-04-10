@@ -111,6 +111,21 @@ notesColor(reqData: any) {
 }
 
 
+deleteNote(reqData: any) {
+  console.log(reqData);
+  let header = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+  };
+
+  return this.httpService.deleteService(
+    `https://localhost:7046/api/notes/${reqData.id}`,
+    true,
+    header
+  );
+}
 
 
 }

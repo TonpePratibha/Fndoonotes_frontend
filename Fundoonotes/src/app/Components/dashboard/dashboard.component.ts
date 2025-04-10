@@ -8,7 +8,7 @@ import { DataserviceService } from '../../Services/DataService/dataservice.servi
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  selectedItem: string = 'notes';  // Default selection
+  selectedItem: string = 'notes';  
 
 constructor(private data:DataserviceService){}
 
