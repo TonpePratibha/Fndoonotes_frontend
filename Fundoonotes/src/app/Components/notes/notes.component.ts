@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from '../../Services/Notes/notes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -9,8 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './notes.component.scss'
 })
 export class NotesComponent implements OnInit{
- 
-  isExpanded = false;
+ @Output() refreshEventCreate=new EventEmitter<string>();
+   isExpanded = false;
   NotesForm!: FormGroup;
   display = false;
 
@@ -22,11 +22,15 @@ export class NotesComponent implements OnInit{
       description: ['', Validators.required],
       color:['']
     });
+    
+  
   }
 
   expandNote() {
     this.isExpanded = true;
   }
+
+  
 
   autoResize(event: any) {
     event.target.style.height = 'auto';
@@ -47,7 +51,7 @@ export class NotesComponent implements OnInit{
     let reqData = {
       title: this.NotesForm.value.title,
       description: this.NotesForm.value.description,
-      color: this.NotesForm.value.color || '#ffffff' 
+      color: this.NotesForm.value.color 
     };
 
     console.log(reqData);
@@ -55,6 +59,7 @@ export class NotesComponent implements OnInit{
     this.notesService.addNotes(reqData).subscribe(
       (response: any) => {
         console.log('Note added:', response);
+        this.refreshEventCreate.emit(response);
       },
       (error) => {
         console.error('Error:', error);
@@ -64,9 +69,19 @@ export class NotesComponent implements OnInit{
     this.display = true;
   }
 
+ 
+  
+ 
+ 
+
 
 
 
 
 }
+
+
+
+
+
 

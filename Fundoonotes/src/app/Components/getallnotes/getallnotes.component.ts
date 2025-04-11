@@ -14,6 +14,7 @@ ngOnInit(): void {
   this.onSubmit();
 }
 
+
 onSubmit()
 {
   this.notes.getNotes().subscribe((response:any)=>{
@@ -29,8 +30,22 @@ onSubmit()
     this.notesArray=this.notesArray.filter((object:any)=>{
       return object.archive==false;
     })
-    this.notesArray.reverse()
+    // this.notesArray.reverse()
   })
+}
+
+
+receivedrefreshEventFromDisplytogetall($event:any){
+  console.log("disply to getallnotes"+$event)
+  this.onSubmit();
+}
+receiverRefreshEventCreate($event:any){
+  console.log("create to getallnotes"+$event)
+  this.onSubmit();
+}
+receivedRefreshEvent($event: any) {
+  console.log("display to getallnotes", $event);
+  this.onSubmit();
 }
 
 }

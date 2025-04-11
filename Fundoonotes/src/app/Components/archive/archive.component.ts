@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from '../../Services/Notes/notes.service';
+
 
 @Component({
   selector: 'app-archive',
@@ -19,8 +20,10 @@ export class ArchiveComponent implements OnInit {
       this.archievList=response
       this.archievList=this.archievList.filter((object:any)=>{
         return object.archive==true && object.trash==false;
+      
 
       })
+      
       console.log(this.archievList)
       
     })

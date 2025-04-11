@@ -3,11 +3,11 @@
     <img class="moreicons" src="group_icon.svg" />
     <img class="moreicons" [matMenuTriggerFor]="paletteMenu"  src="palette_icon.png" />
     <img class="moreicons" (click)="onArchive()" src="archive_icon.png" />
-    <img class="moreicons" (click)="onDelete()" src="delete_icon.png"  />
+    <img class="moreicons" (click)="onTrash()" src="delete_icon.png"  />
     <img class="moreicons" src="more.svg" />
   
     <mat-menu #moreMenu="matMenu" xPosition="before">
-      <button mat-menu-item (click)="onDelete()">Delete note</button>
+      <button mat-menu-item (click)="onTrash()">Delete note</button>
       <button mat-menu-item>Add label</button>
       <button mat-menu-item>Add drawing</button>
       <button mat-menu-item>Make a copy</button>

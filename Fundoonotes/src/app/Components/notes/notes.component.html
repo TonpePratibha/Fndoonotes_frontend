@@ -1,48 +1,14 @@
-<!-- 
-<div class="note-container">
-  <form [formGroup]="NotesForm" (ngSubmit)="onSubmit()">
-    <div class="note" (click)="expandNote()" [class.expanded]="isExpanded">
-
-     
-      <ng-template #titleTemplate>
-        <input type="text" class="note-title" placeholder="Title" formControlName="title" />
-      </ng-template>
-
-     
-      <ng-container *ngIf="isExpanded">
-        <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
-      </ng-container>
-
-    
-      <textarea class="note-description" placeholder="Take a note..." formControlName="description" 
-                rows="1" (input)="autoResize($event)">
-      </textarea>
-
-      
-      <ng-template #buttonTemplate>
-        
-        <app-icons></app-icons>
-         <button type="submit">Add</button>
-      </ng-template>
-
-     
-      <ng-container *ngIf="isExpanded">
-        <ng-container *ngTemplateOutlet="buttonTemplate"></ng-container>
-      </ng-container>
-
-    </div>
-  </form>
-</div>  -->
 
 
  <div class="note-container">
   <form [formGroup]="NotesForm" (ngSubmit)="onSubmit()">
     
 
-      <div class="note" 
+    <div class="note" 
      (click)="expandNote()" 
      [class.expanded]="isExpanded"
-     [ngStyle]="{ 'background-color': NotesForm.value.color }">
+     [ngStyle]="{ 'background-color': NotesForm.value.color }"> 
+     
 
       <ng-template #titleTemplate>
         <input type="text" class="note-title" placeholder="Title" formControlName="title" />
@@ -78,10 +44,13 @@
 
     </div>
   </form>
-</div>
+</div> 
+
+
+
 
  
 
- 
-     
-  
+
+
+

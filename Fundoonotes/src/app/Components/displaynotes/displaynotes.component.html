@@ -11,9 +11,9 @@
       </mat-card-content>
   
       <div class="note-footer">
-        <app-icons [notesObject]="note"  ></app-icons> 
+        <app-icons [notesObject]="note"  (refreshEvent)="receivedRefreshEvent($event)"></app-icons> 
       </div>
     </mat-card>
   </div>
   
-  <!-- (refreshEvent)="receivedRefreshEvent($event)" -->
+ 

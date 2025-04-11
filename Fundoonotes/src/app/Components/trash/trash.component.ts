@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from '../../Services/Notes/notes.service';
-import { response } from 'express';
+
 
 @Component({
   selector: 'app-trash',

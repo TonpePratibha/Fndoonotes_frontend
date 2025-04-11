@@ -25,7 +25,7 @@ constructor(private notes:NotesService){}
 ngOnInit(): void {
   
 }
-onDelete(){
+onTrash(){
   let reqData={
     id:this.notesObject.id,
   }
@@ -34,6 +34,7 @@ onDelete(){
 
   this.notes.trashNotes(reqData).subscribe((response:any)=>{
     console.log("note trashed successfully",response);
+    this.refreshEvent.emit(response);
   })
 
 }
@@ -48,7 +49,7 @@ onArchive(){
   this.notes.archievNotes(reqData).subscribe((response:any)=>{
     // console.log(response);
     console.log("note tarchived successfully",response);
-    //this.refreshEvent.emit(response);
+    this.refreshEvent.emit(response);
   })
 }
 

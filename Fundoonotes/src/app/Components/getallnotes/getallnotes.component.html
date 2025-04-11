@@ -1,2 +1,2 @@
-<app-notes ></app-notes>
-<app-displaynotes [notesList]="notesArray"></app-displaynotes>
+<app-notes (refreshEventCreate)="receiverRefreshEventCreate($event)" ></app-notes>
+<app-displaynotes [notesList]="notesArray" (refreshEventFromDisplytogetall)="receivedRefreshEvent($event)"  (updateAutoRefresh)="receivedrefreshEventFromDisplytogetall($event)"></app-displaynotes>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, output } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { UpdatenoteComponent } from '../updatenote/updatenote.component';
 import { NotesService } from '../../Services/Notes/notes.service';
@@ -12,6 +12,7 @@ import { DataserviceService } from '../../Services/DataService/dataservice.servi
 })
 export class DisplaynotesComponent  {
 @Input() notesList:any[]=[];
+@Output() updateAutoRefresh=new EventEmitter<string>();
 filterNote:any;
 
 constructor(public dialog:MatDialog,public notes:NotesService,public data:DataserviceService){}
@@ -32,7 +33,7 @@ editnoteDialogbox(notes:any){
   })
   dialogbox.afterClosed().subscribe(result=>{
     console.log(result);
-    
+    this.updateAutoRefresh.emit(result);
   })
 }
 
@@ -46,5 +47,7 @@ editnoteDialogbox(notes:any){
 // }
 
 
-
+receivedRefreshEvent($event:any){
+  this.editnoteDialogbox
+}
 }
