@@ -1,11 +1,11 @@
-
+<!-- 
 
    <div class="login-container">
 
-    <!-- Main Content Box -->
+  
     <div class="content-box">
   
-      <!-- Left Section (Text Content) -->
+      
       <div class="left-content">
         <img src="Google-logo.webp" alt="Google Logo" class="google-logo">
         <h1>Register</h1>
@@ -13,7 +13,7 @@
         </p>
       </div>
   
-      <!-- Right Section (Login Form) -->
+    
        <form [formGroup]="RegisterForm" (ngSubmit)="Register()">
       <div class="right-content">
         <div class="login-box">
@@ -31,24 +31,15 @@
             <label for="password">password</label>
             <input type="password" id="password" placeholder="Enter password" formControlName="password">
           </div>
-          <!-- <div class="input-field">
-            <label for="city">city</label>
-            <input type="text" id="city" placeholder="Enter your city" formControlName="city">
-          </div> -->
+       
           <div class="input-field">
             <label for="phone">phone</label>
             <input type="text" id="phone" placeholder="Enter your phone" formControlName="phone">
           </div>
   
-          <!-- Forgot Email Link -->
-        <!-- <div class="forget-pass">
-          <a  routerLink="/frg" class="create-account">Forgot Password?</a>
-        </div>
-        <p>Not your computer? Use Guest mode to sign in privately. Learn more about using Guest mode</p>
-   -->
-          
+        
   
-          <!-- Actions Section -->
+        
           <div class="actions">
             
             <a type="submit"><button  class="next-btn">Next</button></a>
@@ -59,4 +50,74 @@
     </div>
   
     
+  </div> -->
+
+
+  <div class="login-container">
+    <!-- Main Content Box -->
+    <div class="content-box">
+  
+      <!-- Left Section (Text Content) -->
+      <div class="left-content">
+        <img src="Google-logo.webp" alt="Google Logo" class="google-logo">
+        <h1>Register</h1>
+        <p>
+          with your Google Account to continue to Gmail. This account will be
+          available to other Google apps in the browser.
+        </p>
+      </div>
+  
+      <!-- Right Section (Register Form) -->
+      <form [formGroup]="RegisterForm" (ngSubmit)="Register()">
+        <div class="right-content">
+          <div class="login-box">
+  
+            <!-- Name -->
+            <div class="input-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Enter your name" formControlName="name">
+              <div class="error" *ngIf="RegisterForm.get('name')?.invalid && RegisterForm.get('name')?.touched">
+                Name is required (min 3 characters).
+              </div>
+            </div>
+  
+            <!-- Email -->
+            <div class="input-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Enter your email" formControlName="email">
+              <div class="error" *ngIf="RegisterForm.get('email')?.invalid && RegisterForm.get('email')?.touched">
+                Please enter a valid email address.
+              </div>
+            </div>
+  
+            <!-- Password -->
+            <div class="input-field">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter password" formControlName="password">
+              <div class="error" *ngIf="RegisterForm.get('password')?.invalid && RegisterForm.get('password')?.touched">
+                Password is required (min 6 characters).
+              </div>
+            </div>
+  
+          
+  
+            <!-- Phone -->
+            <div class="input-field">
+              <label for="phone">Phone</label>
+              <input type="text" id="phone" placeholder="Enter your phone" formControlName="phone">
+              <div class="error" *ngIf="RegisterForm.get('phone')?.invalid && RegisterForm.get('phone')?.touched">
+                Enter a valid 10-digit phone number.
+              </div>
+            </div>
+  
+            <!-- Actions Section -->
+            <div class="actions">
+              <button type="submit" class="next-btn" [disabled]="RegisterForm.invalid">Next</button>
+            </div>
+  
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
+  

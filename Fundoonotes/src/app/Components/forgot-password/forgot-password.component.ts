@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../Services/User/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,7 +11,7 @@ import { UserService } from '../../Services/User/user.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   ForgotForm!:FormGroup;
-  constructor(private user:UserService,private formBuilder:FormBuilder){}
+  constructor(private user:UserService,private formBuilder:FormBuilder,private snackbar:MatSnackBar){}
 
   submited=false;
   
@@ -31,14 +32,19 @@ export class ForgotPasswordComponent implements OnInit {
      };
      console.log(reqData);
 
-     this.user.Forgot(reqData).subscribe(
-  (res:any)=>{
+     this.user.Forgot(reqData).subscribe((res:any)=>{
     console.log("resetlink sent",res);
-
+   
+    this.snackbar.open('email sent', 'Close', {
+      duration: 1000,
+    });
   }
+ 
 )
 
 
   }
+
+
 
 }

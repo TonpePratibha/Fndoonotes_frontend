@@ -14,10 +14,20 @@
       <button mat-menu-item>Show checkboxes</button>
     </mat-menu>
   </button>
-    <mat-menu #paletteMenu="matMenu" xPosition="before" id="colorpalette" class="test2">
+    <!-- <mat-menu #paletteMenu="matMenu" xPosition="before" id="colorpalette" class="test2">
       <div *ngFor='let colors of colorArray'>
         <button class="colorIcon" [style.background]="colors.code" (click)="selectColor(colors)"></button>
       </div>
+    </mat-menu> -->
+    <mat-menu #paletteMenu="matMenu" xPosition="before" id="colorpalette" class="color-palette-menu">
+      <div class="color-row">
+        <button 
+          *ngFor="let colors of colorArray" 
+          class="colorIcon" 
+          [style.background]="colors.code" 
+          (click)="selectColor(colors)">
+        </button>
+      </div>
     </mat-menu>
-   
+    
     

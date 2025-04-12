@@ -1,4 +1,4 @@
-<div *ngFor="let notes of trashList" class="card">
+<!-- <div *ngFor="let notes of trashList" class="card">
     <mat-card class="notesContainer" [style.background]="notes.color">
         <mat-card-title class="title">{{notes.title}}</mat-card-title>
         <mat-card-content>
@@ -13,8 +13,32 @@
             </button>
         </div>
     </mat-card>
-</div>
+</div> -->
 
+
+<div class="notes-wrapper">
+    <div class="note-card" *ngFor="let notes of trashList" [style.background]="notes.color">
+      
+      <mat-card-title class="note-title">
+        {{ notes.title }}
+      </mat-card-title>
+  
+      <mat-card-content class="note-content">
+        {{ notes.description }}
+      </mat-card-content>
+  
+      <div class="note-footer">
+        <button class="notesbutton">
+          <img class="moreicons" (click)="deleteNote(notes)" src="delete_icon.png">
+          <img class="moreicons" (click)="restore(notes)" src="restore_icon.png">
+        </button>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+  
 
 
   

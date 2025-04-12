@@ -127,11 +127,10 @@ p {
 }
 
 .actions {
-    display: flex 2;
-    padding-right: 100px;
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
-    margin-top: 15px;
-    margin-left: 250px;
+    margin-top: 20px;
 }
 
 .next-btn {
@@ -144,7 +143,33 @@ p {
     font-weight: 500;
     text-decoration: none;
     outline: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
 }
+
+
+// .actions {
+//     display: flex 2;
+//     padding-right: 100px;
+//     width: 100%;
+//     margin-top: 15px;
+//     margin-left: 250px;
+// }
+
+// .next-btn {
+//     background-color: $primary-color;
+//     color: #ffffff;
+//     padding: 12px 32px;
+//     border-radius: 25px;
+//     border: none;
+//     cursor: pointer;
+//     font-weight: 500;
+//     text-decoration: none;
+//     outline: none;
+// }
 
 .footer {
     margin-top: 15px;
@@ -158,3 +183,8 @@ p {
     text-decoration: none;
     color: $text-color;
 }
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }

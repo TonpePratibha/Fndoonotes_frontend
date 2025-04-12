@@ -8,9 +8,10 @@ import { HttpService } from '../Http/http.service';
 export class NotesService {
 token:any;
   constructor(private httpService:HttpService) {
-this.token=localStorage.getItem('token')
+this.token=localStorage.getItem('token');
 
    }
+ 
 
 addNotes(reqData: any) {
   let headers = {
@@ -23,8 +24,30 @@ addNotes(reqData: any) {
   return this.httpService.postServiceToken('https://localhost:7046/api/notes', reqData, true, headers);
 }
 
+archievNotes(reqData: any) {
+  const token = localStorage.getItem('token');
+
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+
+  const body = {
+    isArchived: true // ✅ Make sure this matches what your backend expects
+  };
+
+  return this.httpService.putService(
+    `https://localhost:7046/api/notes/archive/${reqData.id}`,
+    body,
+    true,
+    { headers }
+  );
+}
 
 getNotes(){
+  // In your GET /api/notes
+
+
   let headers={
     headers:new HttpHeaders({
       'Content-Type': 'application/json',
@@ -69,17 +92,39 @@ trashNotes(reqData:any){
 
 
 
-archievNotes(reqData:any){
-  console.log(reqData)
-  let header={
-    headers:new HttpHeaders({
-       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
-    })
-  }
-   return this.httpService.putService(`https://localhost:7046/api/notes/archive/${reqData.id}`,{},true,header);
+// archievNotes(reqData:any){
+//   console.log(reqData)
+//   let header={
+//     headers:new HttpHeaders({
+//        'Content-Type': 'application/json',
+//       'Authorization': `Bearer ${this.token}`
+//     })
+//   }
+//    return this.httpService.putService(`https://localhost:7046/api/notes/archive/${reqData.id}`,{},true,header);
   
-}
+// }
+
+// archievNotes(reqData: any) {
+//   const token = localStorage.getItem('token'); // safer than relying on class-level variable
+
+//   const headers = new HttpHeaders({
+//     'Content-Type': 'application/json',
+//     'Authorization': `Bearer ${token}`
+//   });
+
+//   console.log("Archive Note Request:", reqData);
+//   console.log("Headers:", headers);
+
+//   return this.httpService.putService(
+//     `https://localhost:7046/api/notes/archive/${reqData.id}`,
+//     {}, true,
+//     { headers }
+//   );
+// }
+
+
+
+
 
 // notesColor(reqData:any){
 // console.log(reqData)

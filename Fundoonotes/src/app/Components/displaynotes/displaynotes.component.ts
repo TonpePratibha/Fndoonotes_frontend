@@ -10,8 +10,10 @@ import { DataserviceService } from '../../Services/DataService/dataservice.servi
   templateUrl: './displaynotes.component.html',
   styleUrl: './displaynotes.component.scss'
 })
-export class DisplaynotesComponent  {
+export class DisplaynotesComponent  implements OnInit{
 @Input() notesList:any[]=[];
+@Output() refreshEvent = new EventEmitter<string>(); // EMITS ID TO PARENT
+
 @Output() updateAutoRefresh=new EventEmitter<string>();
 filterNote:any;
 
@@ -47,7 +49,14 @@ editnoteDialogbox(notes:any){
 // }
 
 
-receivedRefreshEvent($event:any){
-  this.editnoteDialogbox
+// notesList: any[] = [];
+
+removeNoteFromList(noteId: string) {
+  // Update UI
+  this.notesList = this.notesList.filter(note => note.id !== Number(noteId));
+  // Notify parent to refresh full list if needed
+  this.refreshEvent.emit(noteId);
 }
+
+
 }

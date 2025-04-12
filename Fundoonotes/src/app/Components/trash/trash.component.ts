@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from '../../Services/Notes/notes.service';
+import { RefreshService } from '../../Services/Refresh/refresh.service';
 
 
 @Component({
@@ -11,20 +12,33 @@ import { NotesService } from '../../Services/Notes/notes.service';
 export class TrashComponent implements OnInit{
 trashList:any[]=[];
 
-@Output() noteRestored = new EventEmitter<void>(); 
-constructor(private notes:NotesService){}
+// @Output() noteRestored = new EventEmitter<void>(); 
+constructor(private notes:NotesService,private refreshService:RefreshService){}
+
+// ngOnInit(): void {
+//   this.onSubmit()
+// }
 
 ngOnInit(): void {
-  this.onSubmit()
+  this.onSubmit();
+  this.refreshService.refresh$.subscribe(() => {
+    console.log('Received refresh in TrashComponent');
+    this.onSubmit(); // 🧠 this will be called when note is trashed
+  });
 }
 onSubmit(){
-  this.notes.getNotes().subscribe((response:any)=>{
-    console.log(response)
-    this.trashList=response
-    this.trashList=this.trashList.filter((object:any)=>{
-      return object.trash==true;
-    })
-  })
+  // this.notes.getNotes().subscribe((response:any)=>{
+  //   console.log(response)
+  //   this.trashList=response
+  //   this.trashList=this.trashList.filter((object:any)=>{
+  //     return object.trash==true;
+  //   })
+  // })
+ 
+    this.notes.getNotes().subscribe((response: any) => {
+      this.trashList = response.filter((note: any) => note.trash === true);
+    });
+  
 }
 restore(notes:any){
 let reqData={
@@ -34,7 +48,7 @@ console.log(reqData)
 this.notes.trashNotes(reqData).subscribe((response:any)=>{
   console.log(response)
   this.trashList = this.trashList.filter((obj: any) => obj.id !== notes.id);
-  this.noteRestored.emit(); 
+  //this.noteRestored.emit(); 
 })
 
 }

@@ -1,22 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../Services/Notes/notes.service';
-
+import { RefreshService } from '../../Services/Refresh/refresh.service';
+interface Note {
+  id: number;
+  title: string;
+  description: string;
+  archive: boolean;
+  trash: boolean;
+  color?: string;
+}
 @Component({
   selector: 'app-getallnotes',
   standalone: false,
   templateUrl: './getallnotes.component.html',
   styleUrl: './getallnotes.component.scss'
 })
+
+
 export class GetallnotesComponent implements OnInit {
 notesArray:any;
 constructor(private notes:NotesService){}
+// ngOnInit(): void {
+//   this.onSubmit();
+// }
 ngOnInit(): void {
   this.onSubmit();
+ 
 }
 
 
 onSubmit()
 {
+ 
   this.notes.getNotes().subscribe((response:any)=>{
     console.log(response);
     this.notesArray=response;
@@ -30,7 +45,7 @@ onSubmit()
     this.notesArray=this.notesArray.filter((object:any)=>{
       return object.archive==false;
     })
-    // this.notesArray.reverse()
+    this.notesArray.reverse()
   })
 }
 
@@ -43,9 +58,14 @@ receiverRefreshEventCreate($event:any){
   console.log("create to getallnotes"+$event)
   this.onSubmit();
 }
+
 receivedRefreshEvent($event: any) {
-  console.log("display to getallnotes", $event);
-  this.onSubmit();
+  console.log("refresh from display", $event);
+ // this.notesArray = this.notesArray.filter(note => note.id !== Number($event));
+  this.notesArray = this.notesArray.filter((note: Note) => note.id !== Number($event));
+
+
 }
+
 
 }

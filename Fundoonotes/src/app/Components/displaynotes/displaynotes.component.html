@@ -1,6 +1,6 @@
 
 
-<div class="notes-grid"  *ngFor="let note of notesList |filter:filterNote">
+<!-- <div class="notes-wrapper"  *ngFor="let note of notesList |filter:filterNote">
     <mat-card class="note-card"  [style.background]="note.color">
       <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
         {{ note.title }} 
@@ -14,6 +14,22 @@
         <app-icons [notesObject]="note"  (refreshEvent)="receivedRefreshEvent($event)"></app-icons> 
       </div>
     </mat-card>
+  </div> -->
+  
+
+
+    <div class="notes-wrapper">
+    <div class="note-card" *ngFor="let note of notesList | filter: filterNote" [style.background]="note.color">
+      <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
+        {{ note.title }}
+      </mat-card-title>
+      <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
+        {{ note.description }}
+      </mat-card-content>
+      <div class="note-footer">
+        <app-icons [notesObject]="note"   ></app-icons>
+      </div>
+    </div>
   </div>
   
- 
+  <!-- //(refreshEvent)="removeNoteFromList($event) -->

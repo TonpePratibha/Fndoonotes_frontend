@@ -11,6 +11,8 @@ export class HttpService {
 
 constructor(private httpClient: HttpClient) {}
 
+
+
   PostService(reqUrl: string, reqData: any, token: boolean = false, httpOptions: any = {}) {
     console.log("POST Request URL:", reqUrl); 
     console.log("POST Request Data:", reqData); 
@@ -39,5 +41,8 @@ deleteService(url: string, token: boolean = true, httpOptions: any = {}) {
   return this.httpClient.delete(url, token ? httpOptions : {});
 }
 
+postServiceTokenm(url: string, data: any, isAuth: boolean = false, options?: any) {
+  return this.httpClient.post(url, data, options);
+}
 
 }

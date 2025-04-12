@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DataserviceService } from '../../Services/DataService/dataservice.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +12,7 @@ import { DataserviceService } from '../../Services/DataService/dataservice.servi
 export class DashboardComponent {
   selectedItem: string = 'notes';  
 
-constructor(private data:DataserviceService){}
+constructor(private data:DataserviceService,private snackBar:MatSnackBar,private router:Router){}
 
   selectItem(item: string) {
     this.selectedItem = item;
@@ -19,5 +21,14 @@ constructor(private data:DataserviceService){}
   search(event:any)
   {console.log(event.target.value)
     this.data.outgoingData(event.target.value);
+  }
+  
+  logout() {
+    localStorage.clear(); // or remove just the token with: localStorage.removeItem('token');
+    this.snackBar.open('Logged out successfully', 'Close', {
+      duration: 2000,
+      panelClass: ['success-snackbar']
+    });
+    this.router.navigate(['/login']);
   }
 }
