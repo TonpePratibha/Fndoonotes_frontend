@@ -45,7 +45,7 @@ archievNotes(reqData: any) {
 }
 
 getNotes(){
-  // In your GET /api/notes
+  
 
 
   let headers={
@@ -90,52 +90,6 @@ trashNotes(reqData:any){
 
 }
 
-
-
-// archievNotes(reqData:any){
-//   console.log(reqData)
-//   let header={
-//     headers:new HttpHeaders({
-//        'Content-Type': 'application/json',
-//       'Authorization': `Bearer ${this.token}`
-//     })
-//   }
-//    return this.httpService.putService(`https://localhost:7046/api/notes/archive/${reqData.id}`,{},true,header);
-  
-// }
-
-// archievNotes(reqData: any) {
-//   const token = localStorage.getItem('token'); // safer than relying on class-level variable
-
-//   const headers = new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     'Authorization': `Bearer ${token}`
-//   });
-
-//   console.log("Archive Note Request:", reqData);
-//   console.log("Headers:", headers);
-
-//   return this.httpService.putService(
-//     `https://localhost:7046/api/notes/archive/${reqData.id}`,
-//     {}, true,
-//     { headers }
-//   );
-// }
-
-
-
-
-
-// notesColor(reqData:any){
-// console.log(reqData)
-// let header={
-//   headers:new HttpHeaders({
-//     'Content-Type': 'application/json',
-//    'Authorization': `Bearer ${this.token}`
-//  })
-// }
-// return this.httpService.putService(`https://localhost:7046/api/notes/${reqData.id}`,{color: reqData.color},true,header)
-// }
 
 notesColor(reqData: any) {
   console.log("API Request Data:", reqData);

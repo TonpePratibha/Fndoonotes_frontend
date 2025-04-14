@@ -1,7 +1,18 @@
-<app-notes (refreshEventCreate)="receiverRefreshEventCreate($event)" ></app-notes>
-<!-- <app-displaynotes [notesList]="notesArray" (refreshEventFromDisplytogetall)="receivedRefreshEvent($event)"  (updateAutoRefresh)="receivedrefreshEventFromDisplytogetall($event)"></app-displaynotes> -->
+<!-- <app-notes (refreshEventCreate)="receiverRefreshEventCreate($event)" ></app-notes>
+
 <app-displaynotes 
   [notesList]="notesArray"
   (refreshEvent)="receivedRefreshEvent($event)"
-  (updateAutoRefresh)="receivedrefreshEventFromDisplytogetall($event)">
-</app-displaynotes>
+  (updateAutoRefresh)="receivedrefreshEventFromDisplytogetall($event)"
+  >
+</app-displaynotes> -->
+
+
+ <app-notes (displaytogetallnotes)="receiveMessagefromdisplaycard($event)" ></app-notes>
+
+<app-displaynotes 
+  [notesList]="notesArray"
+  (displaytogetallnotes)="receiveMessagefromdisplaycard($event)"
+ 
+  >
+</app-displaynotes> 

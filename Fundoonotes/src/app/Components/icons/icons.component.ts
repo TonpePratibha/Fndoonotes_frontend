@@ -13,79 +13,60 @@ import { RefreshService } from '../../Services/Refresh/refresh.service';
 })
 export class IconsComponent implements OnInit{
 @Input() notesObject:any
-//@Output()refreshEvent=new EventEmitter<string>();
-
+trash: boolean = false;
+archieve: boolean = false;
+// @Output()refreshEvent=new EventEmitter<string>();
+@Output() iconstodisplay = new EventEmitter<string>();
 
 
 @Input() isCreateMode: boolean = false;
 
-@Output() colorSelected = new EventEmitter<string>(); // NEW: to notify NotesComponent
+@Output() colorSelected = new EventEmitter<string>();
 
 constructor(private notes:NotesService,private refreshService:RefreshService){}
 
 ngOnInit(): void {
   
 }
-// onTrash(){
-//   let reqData={
-//     id:this.notesObject.id,
-//   }
-//   console.log(reqData)
-//   console.log("Notes Object: ", this.notesObject);
 
-//   this.notes.trashNotes(reqData).subscribe((response:any)=>{
-//     console.log("note trashed successfully",response);
-//     this.refreshEvent.emit(response);
-//   })
-
-// }
 
 onTrash() {
   const reqData = { id: this.notesObject.id };
   this.notes.trashNotes(reqData).subscribe((res: any) => {
     console.log('Trashed successfully', res);
-    this.refreshService.triggerRefresh(); // 🔥 This tells other components to refresh
+   // this.refreshService.triggerRefresh(); 
+    this.iconstodisplay.emit(res);
   });
 }
 
 
-// onArchive(){
-//   let reqData={
-//     id:this.notesObject.id
-//   }
-//   console.log(reqData);
-//   this.notes.archievNotes(reqData).subscribe((response:any)=>{
-//     // console.log(response);
-//     console.log("note tarchived successfully",response);
-//     this.refreshEvent.emit(response);
-//   })
-// }
+// unTrash() {
+ 
 
-// onArchive(note: any) {
-//   this.notes.archievNotes(note).subscribe((response: any) => {
-//     console.log("Archive response", response);
-//     this.refreshEvent.emit(note.id); // 🔥 Let parent know to remove this note
+//   const reqData = { id: this.notesObject.id };
+//   this.notes.trashNotes(reqData).subscribe((res: any) => {
+//     console.log('Trashed successfully', res);
+//    // this.refreshService.triggerRefresh(); 
+//     this.iconstodisplay.emit(res);
 //   });
 // }
 
-// onArchive() {
-//   if (!this.notesObject || !this.notesObject.id) {
-//     console.error('Note object is undefined or missing id');
-//     return;
-//   }
-
-//   this.notes.archievNotes(this.notesObject).subscribe((response: any) => {
-//     console.log('Archive response:', response);
-//     this.refreshEvent.emit(this.notesObject.id);
-//   });
-// }
 onArchive() {
   const reqData = { id: this.notesObject.id };
   this.notes.archievNotes(reqData).subscribe((res: any) => {
     console.log('Archived successfully', res);
-    this.refreshService.triggerRefresh(); // 🔥 Trigger refresh
+    //this.refreshService.triggerRefresh(); 
+    this.iconstodisplay.emit(res);
   });
 }
+// unArchive() {
+//   const reqData = { id: this.notesObject.id };
+//   this.notes.archievNotes(reqData).subscribe((res: any) => {
+//     console.log('Archived successfully', res);
+//     //this.refreshService.triggerRefresh(); 
+//     this.iconstodisplay.emit(res);
+//   });
+// }
 
 
 colorArray: Array<any> = [
@@ -120,6 +101,7 @@ selectColor(color: any) {
         console.log("Color updated successfully", response);
         this.notesObject.color = color.code;
         //this.refreshEvent.emit();
+        this.iconstodisplay.emit(response);
       },
       (error) => {
         console.error("Error updating color", error);

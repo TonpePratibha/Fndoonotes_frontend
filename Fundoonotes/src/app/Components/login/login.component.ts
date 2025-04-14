@@ -25,35 +25,70 @@ loginForm!: FormGroup;
     });
   }
 
-  Login() {
-    if (this.loginForm.valid) {
-      let reqData = {
-        email: this.loginForm.value.email,
-        password: this.loginForm.value.password
-      };
+  // Login() {
+  //   if (this.loginForm.valid) {
+  //     let reqData = {
+  //       email: this.loginForm.value.email,
+  //       password: this.loginForm.value.password
+  //     };
 
-      console.log("Login Form Data:", reqData); 
+  //     console.log("Login Form Data:", reqData); 
 
-      this.user.Login(reqData).subscribe(
-        (res: any) => {
-          console.log('Login Success:', res); 
-          localStorage.setItem("token",res.token);
-          this.router.navigate(['/dashboard']);
+  //     this.user.Login(reqData).subscribe(
+  //       (res: any) => {
+  //         console.log('Login Success:', res); 
+  //         localStorage.setItem("token",res.token);
+  //         this.router.navigate(['/dashboard']);
           
-          this.snackbar.open('login Successfull!', 'Close', {
-            duration: 1000,
-            panelClass: ['success-snackbar']
-          });
+  //         this.snackbar.open('login Successfull!', 'Close', {
+  //           duration: 1000,
+  //           panelClass: ['success-snackbar']
+  //         });
 
-        },
-        (error) => {
-          console.error('Login Error:', error); 
-        }
-      );
-    } else {
-      console.log("Form is invalid"); 
+  //       },
+  //       (error) => {
+  //         console.error('Login Error:', error); 
+          
+  //       }
+  //     );
+  //   } else {
+  //     console.log("Form is invalid"); 
+
+  //   }
+  // }
+
+
+  Login() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched(); // 💡 Trigger all field errors
+      this.snackbar.open('Please fill the form correctly', 'Close', {
+        duration: 2000,
+        panelClass: ['error-snackbar']
+      });
+      return;
     }
+  
+    let reqData = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
+  
+    this.user.Login(reqData).subscribe(
+      (res: any) => {
+        console.log('Login Success:', res);
+        localStorage.setItem("token", res.token);
+        this.router.navigate(['/dashboard']);
+        this.snackbar.open('Login Successful!', 'Close', {
+          duration: 1000,
+          panelClass: ['success-snackbar']
+        });
+      },
+      (error) => {
+        console.error('Login Error:', error);
+      }
+    );
   }
+  
 
   get email() {
     return this.loginForm.get('email');

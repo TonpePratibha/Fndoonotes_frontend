@@ -31,9 +31,10 @@
 
 // }
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NotesService } from '../../Services/Notes/notes.service';
 import { RefreshService } from '../../Services/Refresh/refresh.service';
+
 
 @Component({
   selector: 'app-archive',
@@ -43,8 +44,9 @@ import { RefreshService } from '../../Services/Refresh/refresh.service';
 })
 export class ArchiveComponent implements OnInit {
   archievList: any[] = [];
-
-  constructor(private notes: NotesService) {}
+  token:any;
+  @Output() displaytogetallnotes = new EventEmitter<string>();
+  constructor(private notes: NotesService) { this.token = localStorage.getItem('token');}
 
   ngOnInit(): void {
     this.getArchiveNotes();
@@ -61,15 +63,14 @@ export class ArchiveComponent implements OnInit {
   }
  
 
-  refreshFromIcon() {
+  receiveMessagefromdisplaycard($event: any) {
+    console.log('insidegetallnotes', $event);
     this.getArchiveNotes();
   }
-  handleRefresh(event: any) {
-    this.getArchiveNotes(); // re-fetch notes after an archive
-  }
-  removeNoteFromList(noteId: string) {
-    this.archievList = this.archievList.filter(note => note.id !== Number(noteId));
-  }
+  
+  // removeNoteFromList(noteId: string) {
+  //   this.archievList = this.archievList.filter(note => note.id !== Number(noteId));
+  // }
   
 }
 

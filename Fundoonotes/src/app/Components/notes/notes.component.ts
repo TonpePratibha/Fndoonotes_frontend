@@ -60,6 +60,7 @@ export class NotesComponent implements OnInit{
       (response: any) => {
         console.log('Note added:', response);
         this.refreshEventCreate.emit(response);
+        
       },
       (error) => {
         console.error('Error:', error);

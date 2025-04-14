@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataserviceService } from '../../Services/DataService/dataservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LayoutService } from '../../Services/Layout/layout.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
   selectedItem: string = 'notes';  
+  isGridView: boolean = true;
 
-constructor(private data:DataserviceService,private snackBar:MatSnackBar,private router:Router){}
+constructor(private data:DataserviceService,private snackBar:MatSnackBar,private router:Router,private layoutservice:LayoutService){}
 
   selectItem(item: string) {
     this.selectedItem = item;
@@ -31,4 +33,32 @@ constructor(private data:DataserviceService,private snackBar:MatSnackBar,private
     });
     this.router.navigate(['/login']);
   }
+
+  OnLogout(){
+    localStorage.removeItem("token");
+    this.router.navigateByUrl('/login');
+    this.snackBar.open("Logout Successful",'',{duration: 3000});
+  }
+
+  isRotating = false;
+
+refresh() {
+  this.isRotating = true;
+
+  // your refresh logic here...
+
+  setTimeout(() => {
+    this.isRotating = false;
+  }, 500); // same duration as animation
+}
+
+
+
+
+
+toggleGridView() {
+  this.isGridView = !this.isGridView;
+  this.layoutservice.setGridView(this.isGridView);
+}
+
 }

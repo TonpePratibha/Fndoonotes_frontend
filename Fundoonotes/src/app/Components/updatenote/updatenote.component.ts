@@ -34,7 +34,7 @@ export class UpdatenoteComponent implements OnInit {
 }
  closeDialog(){
   let reqData={
-    title:this.title,
+  title:this.title,
   description: this.description,
   color: this.color,
   

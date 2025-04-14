@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.RegisterForm = this.formbuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3),Validators.pattern(/^[A-Za-z\s]+$/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       city: [''],
@@ -86,7 +86,38 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  // Register() {
+  
+  //   if (this.RegisterForm.invalid) {
+  //     this.RegisterForm.markAllAsTouched();
+  //     this.snackbar.open('Please fill the form correctly', 'Close', {
+  //       duration: 2000,
+  //       panelClass: ['error-snackbar']
+  //     });
+  //     return;
+  //   }
+
+  //   const reqData = this.RegisterForm.value;
+
+  //   this.user.Register(reqData).subscribe({
+  //     next: (res) => {
+  //       console.log("Registration Successful:", res);
+  //       this.router.navigate(['/login']);
+  //       this.snackbar.open('User Registered Successfully!', 'Close', {
+  //         duration: 1500,
+  //         panelClass: ['success-snackbar']
+  //       });
+  //     },
+  //     error: (err) => {
+  //       console.error("Registration Failed:", err);
+  //     }
+  //   });
+  // }
+
   Register() {
+  
+    this.RegisterForm.markAllAsTouched();
+  
     if (this.RegisterForm.invalid) {
       this.snackbar.open('Please fill the form correctly', 'Close', {
         duration: 2000,
@@ -94,9 +125,9 @@ export class RegisterComponent implements OnInit {
       });
       return;
     }
-
+  
     const reqData = this.RegisterForm.value;
-
+  
     this.user.Register(reqData).subscribe({
       next: (res) => {
         console.log("Registration Successful:", res);
@@ -111,4 +142,5 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
+  
 }

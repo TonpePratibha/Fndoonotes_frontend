@@ -19,10 +19,12 @@ interface Note {
 
 export class GetallnotesComponent implements OnInit {
 notesArray:any;
-constructor(private notes:NotesService){}
-// ngOnInit(): void {
-//   this.onSubmit();
-// }
+token:any;
+
+constructor(private notes:NotesService){
+  this.token = localStorage.getItem('token');
+}
+
 ngOnInit(): void {
   this.onSubmit();
  
@@ -37,35 +39,40 @@ onSubmit()
     this.notesArray=response;
     console.log("stored to array variable")
     console.log(this.notesArray);
+    this.notesArray.reverse()
  
     this.notesArray=this.notesArray.filter((object:any)=>{
-      return object.trash==false;
+      return object.trash===false;
 
     })
     this.notesArray=this.notesArray.filter((object:any)=>{
-      return object.archive==false;
+      return object.archive===false;
     })
-    this.notesArray.reverse()
+    
   })
 }
 
-
-receivedrefreshEventFromDisplytogetall($event:any){
-  console.log("disply to getallnotes"+$event)
-  this.onSubmit();
-}
-receiverRefreshEventCreate($event:any){
-  console.log("create to getallnotes"+$event)
+receiveMessagefromdisplaycard($event: any) {
+  console.log('insidegetallnotes', $event);
   this.onSubmit();
 }
 
-receivedRefreshEvent($event: any) {
-  console.log("refresh from display", $event);
- // this.notesArray = this.notesArray.filter(note => note.id !== Number($event));
-  this.notesArray = this.notesArray.filter((note: Note) => note.id !== Number($event));
+// receivedrefreshEventFromDisplytogetall($event:any){
+//   console.log("disply to getallnotes"+$event)
+//   this.onSubmit();
+// }
+// receiverRefreshEventCreate($event:any){
+//   console.log("create to getallnotes"+$event)
+//   this.onSubmit();
+// }
+
+// receivedRefreshEvent($event: any) {
+//   console.log("refresh from display", $event);
+
+//   this.notesArray = this.notesArray.filter((note: Note) => note.id !== Number($event));
 
 
-}
+// }
 
 
 }

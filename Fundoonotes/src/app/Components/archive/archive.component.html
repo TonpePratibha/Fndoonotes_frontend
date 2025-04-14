@@ -1,23 +1,15 @@
 <!-- 
-<app-displaynotes [notesList]="archievList"></app-displaynotes> -->
-<!-- <app-displaynotes [notesList]="archievList"(updateAutoRefresh)="getArchiveNotes()" ></app-displaynotes> -->
 <app-displaynotes 
   [notesList]="archievList"
   (refreshEvent)="removeNoteFromList($event)"
   (updateAutoRefresh)="getArchiveNotes()">
-</app-displaynotes>
+</app-displaynotes> -->
 
-<!-- <div class="notes-wrapper">
-    <div class="note-card" *ngFor="let note of archievList" [style.background]="note.color">
-      <mat-card-title class="note-title">{{ note.title }}</mat-card-title>
-      <mat-card-content class="note-content">{{ note.description }}</mat-card-content>
-      <div class="note-footer">
-        <app-icons [notesObject]="note" (refreshEvent)="refreshFromIcon()"></app-icons>
-      </div>
-    </div>
-  </div> -->
+
   
    
-  
-    <!-- Notes Display -->
+<div>
+  <app-displaynotes [notesList]="archievList" (displaytogetallnotes)="receiveMessagefromdisplaycard($event)"></app-displaynotes>
+</div>
+ 
     

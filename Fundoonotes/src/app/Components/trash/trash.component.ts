@@ -12,30 +12,24 @@ import { RefreshService } from '../../Services/Refresh/refresh.service';
 export class TrashComponent implements OnInit{
 trashList:any[]=[];
 
-// @Output() noteRestored = new EventEmitter<void>(); 
+ @Output() noteRestored = new EventEmitter<void>(); 
+
+ @Output() displaytogetallnotes = new EventEmitter<string>();
 constructor(private notes:NotesService,private refreshService:RefreshService){}
 
-// ngOnInit(): void {
-//   this.onSubmit()
-// }
 
 ngOnInit(): void {
   this.onSubmit();
   this.refreshService.refresh$.subscribe(() => {
     console.log('Received refresh in TrashComponent');
-    this.onSubmit(); // 🧠 this will be called when note is trashed
+    this.onSubmit(); 
   });
 }
 onSubmit(){
-  // this.notes.getNotes().subscribe((response:any)=>{
-  //   console.log(response)
-  //   this.trashList=response
-  //   this.trashList=this.trashList.filter((object:any)=>{
-  //     return object.trash==true;
-  //   })
-  // })
  
+  
     this.notes.getNotes().subscribe((response: any) => {
+      this.trashList = response.data;
       this.trashList = response.filter((note: any) => note.trash === true);
     });
   
@@ -48,7 +42,7 @@ console.log(reqData)
 this.notes.trashNotes(reqData).subscribe((response:any)=>{
   console.log(response)
   this.trashList = this.trashList.filter((obj: any) => obj.id !== notes.id);
-  //this.noteRestored.emit(); 
+  this.noteRestored.emit(); 
 })
 
 }
@@ -66,5 +60,8 @@ deleteNote(note: any) {
     }
   });
 }
-
+receiveMessagefromdisplaycard($event: any) {
+  console.log('insidegetallnotes', $event);
+  this.onSubmit();
+}
 }

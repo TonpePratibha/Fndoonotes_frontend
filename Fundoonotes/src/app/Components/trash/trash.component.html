@@ -1,20 +1,5 @@
-<!-- <div *ngFor="let notes of trashList" class="card">
-    <mat-card class="notesContainer" [style.background]="notes.color">
-        <mat-card-title class="title">{{notes.title}}</mat-card-title>
-        <mat-card-content>
-            <div style="min-height: 35px; display: block; overflow-wrap: break-word;">
-                {{notes.notesId}}
-            </div>
-        </mat-card-content>
-        <div>
-            <button class="notesbutton">
-                <img class="moreicons" (click)="deleteNote(notes)" src="delete_icon.png" >
-                <img class="moreicons" (click)="restore(notes)" src="restore_icon.png">
-            </button>
-        </div>
-    </mat-card>
-</div> -->
 
+<!-- 
 
 <div class="notes-wrapper">
     <div class="note-card" *ngFor="let notes of trashList" [style.background]="notes.color">
@@ -35,9 +20,11 @@
       </div>
   
     </div>
-  </div>
+  </div> -->
   
-  
+  <div>
+    <app-displaynotes [notesList]="trashList" (displaytogetallnotes)="receiveMessagefromdisplaycard($event)"></app-displaynotes>
+</div>
   
 
 
