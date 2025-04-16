@@ -33,7 +33,7 @@ import { IconsComponent } from './Components/icons/icons.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { UpdatenoteComponent } from './Components/updatenote/updatenote.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FilterPipe } from './Pipes/filter.pipe';
 
 
@@ -55,7 +55,7 @@ import { FilterPipe } from './Pipes/filter.pipe';
     DisplaynotesComponent,
     IconsComponent,
     UpdatenoteComponent,
-  
+ 
     FilterPipe,
     
    
@@ -76,8 +76,9 @@ import { FilterPipe } from './Pipes/filter.pipe';
     MatBadgeModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSnackBarModule
-    // AppModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+  
 
     
   ],

@@ -45,6 +45,8 @@ import { RefreshService } from '../../Services/Refresh/refresh.service';
 export class ArchiveComponent implements OnInit {
   archievList: any[] = [];
   token:any;
+  isLoading: boolean = false;
+
   @Output() displaytogetallnotes = new EventEmitter<string>();
   constructor(private notes: NotesService) { this.token = localStorage.getItem('token');}
 
@@ -53,15 +55,36 @@ export class ArchiveComponent implements OnInit {
    
   }
 
-  getArchiveNotes() {
+  // getArchiveNotes() {
    
-    this.notes.getNotes().subscribe((response: any) => {
-      this.archievList = response.filter((note: any) =>
-        note.archive === true && note.trash === false
-      );
+  //   this.notes.getNotes().subscribe((response: any) => {
+  //     this.archievList = response.filter((note: any) =>
+  //       note.archive === true && note.trash === false
+  //     );
+      
+  //   });
+   
+  // }
+  getArchiveNotes() {
+    this.isLoading = true;  // Show the loader while fetching notes
+    
+    this.notes.getNotes().subscribe({
+      next: (response: any) => {
+        // Filter archived notes that are not in trash
+        this.archievList = response.filter((note: any) =>
+          note.archive === true && note.trash === false
+        );
+      },
+      error: (error) => {
+        console.error('Error fetching archived notes:', error);
+        // You can show an error message to the user here if you want
+      },
+      complete: () => {
+        this.isLoading = false;  // Hide the loader once the data is fetched
+      }
     });
   }
- 
+  
 
   receiveMessagefromdisplaycard($event: any) {
     console.log('insidegetallnotes', $event);

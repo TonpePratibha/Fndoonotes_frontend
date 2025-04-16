@@ -3,6 +3,7 @@ import { DataserviceService } from '../../Services/DataService/dataservice.servi
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LayoutService } from '../../Services/Layout/layout.service';
+import { NotesrefreshService } from '../../Services/Notesrefresh/notesrefresh.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +13,33 @@ import { LayoutService } from '../../Services/Layout/layout.service';
 })
 export class DashboardComponent {
   selectedItem: string = 'notes';  
+  pageTitle: string = 'Keep';
   isGridView: boolean = true;
 
-constructor(private data:DataserviceService,private snackBar:MatSnackBar,private router:Router,private layoutservice:LayoutService){}
 
-  selectItem(item: string) {
-    this.selectedItem = item;
+
+constructor(private data:DataserviceService,private snackBar:MatSnackBar,private router:Router,private layoutservice:LayoutService,private notesrefresh:NotesrefreshService
+
+){}
+
+  // selectItem(item: string) {
+  //   this.selectedItem = item;
+  // }
+
+  
+  
+
+selectItem(item: string) {
+  this.selectedItem = item;
+  if (item === 'notes') {
+    this.pageTitle = 'Keep';
+  } else if (item === 'archive') {
+    this.pageTitle = 'Archive';
+  } else if (item === 'trash') {
+    this.pageTitle = 'Trash';
   }
+}
+
 
   search(event:any)
   {console.log(event.target.value)
@@ -46,6 +67,7 @@ refresh() {
   this.isRotating = true;
 
   // your refresh logic here...
+  this.notesrefresh.triggerRefresh();
 
   setTimeout(() => {
     this.isRotating = false;

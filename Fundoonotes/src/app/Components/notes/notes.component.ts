@@ -43,34 +43,61 @@ export class NotesComponent implements OnInit{
     console.log("Color selected in create:", color);
   }
   
+  // onSubmit() {
+  //   if (this.NotesForm.invalid) {
+  //     return;
+  //   }
+
+  //   let reqData = {
+  //     title: this.NotesForm.value.title,
+  //     description: this.NotesForm.value.description,
+  //     color: this.NotesForm.value.color 
+  //   };
+
+  //   console.log(reqData);
+    
+  //   this.notesService.addNotes(reqData).subscribe(
+  //     (response: any) => {
+  //       console.log('Note added:', response);
+  //       this.refreshEventCreate.emit(response);
+        
+  //     },
+  //     (error) => {
+  //       console.error('Error:', error);
+  //     }
+  //   );
+
+  //   this.display = true;
+  // }
+
   onSubmit() {
     if (this.NotesForm.invalid) {
       return;
     }
-
-    let reqData = {
+  
+    const reqData = {
       title: this.NotesForm.value.title,
       description: this.NotesForm.value.description,
-      color: this.NotesForm.value.color 
+      color: this.NotesForm.value.color
     };
-
-    console.log(reqData);
-    
+  
     this.notesService.addNotes(reqData).subscribe(
       (response: any) => {
         console.log('Note added:', response);
         this.refreshEventCreate.emit(response);
-        
+  
+        // Reset and collapse
+        this.NotesForm.reset();
+        this.isExpanded = false;
       },
       (error) => {
         console.error('Error:', error);
       }
     );
-
+  
     this.display = true;
   }
-
- 
+  
   
  
  

@@ -11,6 +11,7 @@ import { NotesComponent } from './Components/notes/notes.component';
 import { ArchiveComponent } from './Components/archive/archive.component';
 import { TrashComponent } from './Components/trash/trash.component';
 import { GetallnotesComponent } from './Components/getallnotes/getallnotes.component';
+import { authGuard } from './Authguard/auth.guard';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path:'msg', component:MessangerComponent},
   {path:'data',component:DataBindingComponent},
 
-  {path:'dashboard', component:DashboardComponent,
+  {path:'dashboard', component:DashboardComponent, canActivate:[authGuard],
     children:[
       {path:'notes',component:GetallnotesComponent},
       {path:'archive',component:ArchiveComponent},

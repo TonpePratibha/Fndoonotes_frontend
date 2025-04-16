@@ -4,15 +4,29 @@
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="keeplogo.png" alt="Google Keep" class="keep-logo" />
-      <span class="logo">Keep</span>
+      <img src="keep_logo.png" alt="Google Keep" class="keep-logo" />
+      <!-- <span class="logo">Keep</span> -->
+      <span class="logo">{{ pageTitle }}</span>
+
     </div>
   
-    <mat-form-field appearance="outline" class="search-bar">
+    <!-- <mat-form-field appearance="fill" class="search-bar">
       <mat-icon matPrefix>search</mat-icon>
       <input matInput placeholder="Search" (keyup)="search($event)" />
-    </mat-form-field>
-  
+    </mat-form-field> -->
+    <!-- <div class="search-bar">
+      <mat-icon>search</mat-icon>
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="Search" (keyup)="search($event)" />
+      </mat-form-field>
+    </div>
+     -->
+
+     <div class="search-bar">
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Search" (keyup)="search($event)" />
+    </div>
+    
     <div class="right-section">
       
       <!-- <mat-icon class="toolbar-icon" (click)="refresh()">refresh</mat-icon> -->
@@ -26,11 +40,10 @@
     </mat-icon>
     
       <mat-icon class="toolbar-icon" (click)="toggleGridView()" matTooltip="Toggle View">  {{ isGridView ? 'view_list' : 'grid_view' }}</mat-icon>
-       <!-- <mat-icon class="toolbar-icon" (click)="toggleGridView()" matTooltip="Toggle View">
-  {{ isGridView ? 'view_list' : 'grid_view' }}
-</mat-icon> -->
+  
 
       <mat-icon class="toolbar-icon">settings</mat-icon>
+      <mat-icon class="toolbar-icon">apps</mat-icon>
       <!-- <img src="profile_icon.png" alt="Profile" class="avatar" (click)="OnLogout()" /> -->
       <div class="avatar-container" (click)="OnLogout()">
         <img src="profile_icon.png" alt="Profile" class="avatar" />
@@ -67,10 +80,7 @@
           <span> Trash</span>
         </a>
 
-        <!-- <a mat-list-item (click)="logout()">
-          <mat-icon fontIcon="logout">logout</mat-icon>
-          <span> Logout</span>
-        </a> -->
+    
       
       </mat-nav-list>
 

@@ -16,6 +16,8 @@ export class DisplaynotesComponent  implements OnInit{
 @Input() notesList:any[]=[];
 @Input() isGridView: boolean = true;
 layoutChosen: boolean = false;
+@Input() isLoading: boolean = false;
+
 
 //@Output() refreshEvent = new EventEmitter<string>(); 
 @Output() displaytogetallnotes = new EventEmitter<string>();

@@ -23,11 +23,22 @@
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 5px;
+    
   }
   
   .note-content {
     min-height: 35px;
     overflow-wrap: break-word;
+  }
+  // .matInput{
+  //   border:none;
+  //   outline: none;
+  // }
+  input {
+    border: none;
+    outline: none; /* optional: removes the blue highlight when focused */
+    background: transparent; /* optional: no background */
+
   }
   
   .note-footer {

@@ -1,7 +1,7 @@
-
+<!-- (ngSubmit)="onSubmit()" -->
 
  <div class="note-container">
-  <form [formGroup]="NotesForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="NotesForm" >  
     
 
     <div class="note" 
@@ -32,7 +32,7 @@
           (colorSelected)="onColorSelected($event)">
         </app-icons>
         
-        <button mat-button>close</button>
+        <button mat-button type="button" (click)="onSubmit()">close</button>
         
         </div>
       </ng-template>

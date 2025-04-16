@@ -1,102 +1,4 @@
 <!-- 
-  
-
-
-    <div class="notes-wrapper"  [ngClass]="{ 'grid': isGridView, 'list': !isGridView }">
-    <div class="note-card" *ngFor="let note of notesList | filter: filterNote" [style.background]="note.color">
-      <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
-        {{ note.title }}
-      </mat-card-title>
-      <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
-        {{ note.description }}
-      </mat-card-content>
-      <div class="note-footer">
-        <app-icons [notesObject]="note"  (iconstodisplay)="recievefromiconstodisplaycard($event)"
-        ></app-icons>
-         
-      </div>
-    </div>
-  </div> -->
-  
-  <!-- <div class="notes-container" [ngClass]="{
-    'grid': layoutChosen && isGridView,
-    'list': layoutChosen && !isGridView,
-    'default-layout': !layoutChosen
-  }">
-    <div class="note-card" *ngFor="let note of notesList | filter: filterNote" [style.background]="note.color">
-      <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
-        {{ note.title }}
-      </mat-card-title>
-      <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
-        {{ note.description }}
-      </mat-card-content>
-      <div class="note-footer">
-        <app-icons
-          [notesObject]="note"
-          (iconstodisplay)="recievefromiconstodisplaycard($event)">
-        </app-icons>
-      </div>
-    </div>
-  </div> -->
-  
-
-
-  <!-- <div class="notes-container" 
-  [ngClass]="{
-    'grid': layoutChosen && isGridView,
-    'list': layoutChosen && !isGridView,
-    'default-layout': !layoutChosen
-  }">
-<div class="note-card" 
-    *ngFor="let note of notesList | filter: filterNote" 
-    [style.background]="note.color">
-    
- <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
-   {{ note.title }}
- </mat-card-title>
- 
- <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
-   {{ note.description }}
- </mat-card-content>
- 
- <div class="note-footer">
-   <app-icons
-     [notesObject]="note"
-     (iconstodisplay)="recievefromiconstodisplaycard($event)">
-   </app-icons>
- </div>
-</div>
-</div> -->
-
-  <!-- Default grid layout (your current view) -->
-<!-- <div class="notes-wrapper" *ngIf="isGridView">
-  <div class="note-card" *ngFor="let note of notesList | filter: filterNote" [style.background]="note.color">
-    <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
-      {{ note.title }}
-    </mat-card-title>
-    <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
-      {{ note.description }}
-    </mat-card-content>
-    <div class="note-footer">
-      <app-icons [notesObject]="note" (iconstodisplay)="recievefromiconstodisplaycard($event)"></app-icons>
-    </div>
-  </div>
-</div>
-
-
-<div class="notes-container list" *ngIf="!isGridView">
-  <div class="note-card" *ngFor="let note of notesList | filter: filterNote" [style.background]="note.color">
-    <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
-      {{ note.title }}
-    </mat-card-title>
-    <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
-      {{ note.description }}
-    </mat-card-content>
-    <div class="note-footer">
-      <app-icons [notesObject]="note" (iconstodisplay)="recievefromiconstodisplaycard($event)"></app-icons>
-    </div>
-  </div>
-</div> -->
 <div class="notes-container" [ngClass]="isGridView ? 'grid' : 'list'">
   <div class="note-card" 
        *ngFor="let note of notesList | filter: filterNote"
@@ -116,4 +18,36 @@
     </div>
 
   </div>
+</div> -->
+
+<!-- Show Loader When isLoading is True -->
+<div *ngIf="isLoading" class="loader-container">
+  <mat-progress-spinner
+    color="primary"
+    mode="indeterminate"
+    diameter="50"
+  ></mat-progress-spinner>
 </div>
+
+<!-- Show Notes Grid When Done Loading -->
+<div *ngIf="!isLoading" class="notes-container" [ngClass]="isGridView ? 'grid' : 'list'">
+  <div class="note-card" 
+       *ngFor="let note of notesList | filter: filterNote"
+       [ngClass]="isGridView ? 'grid-size' : 'list-size'"
+       [style.background]="note.color">
+
+    <mat-card-title class="note-title" (click)="editnoteDialogbox(note)">
+      {{ note.title }}
+    </mat-card-title>
+
+    <mat-card-content class="note-content" (click)="editnoteDialogbox(note)">
+      {{ note.description }}
+    </mat-card-content>
+
+    <div class="note-footer">
+      <app-icons [notesObject]="note" (iconstodisplay)="recievefromiconstodisplaycard($event)"></app-icons>
+    </div>
+
+  </div>
+</div>
+
